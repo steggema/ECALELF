@@ -1,0 +1,80 @@
+/** 
+\mainpage 
+\author Shervin Nourbakhsh
+\tableofcontents
+
+==============================
+\section DOC Code Documentation
+
+The documentation of this packaged is provided in these pages extracted with doxygen from the source code and several txt files contained in the package itself.
+
+Informations for the implementation or re-implementation can be
+obtained looking the the various header files that will be completed
+with exaustive documentation (in the future)
+
+If you have doxygen, you can run the command
+\code doxygen fulldoc  \endcode
+from the Calibration/ directory and you can navigate instructions and code locally with
+\verbatim firefox doc/doxygen/fulldoc/html/index.html \endverbatim
+
+
+
+==============================
+\section START Getting Started
+\subpage preReq
+
+\subpage INTRODUCTION
+
+==============================
+\section DOWNLOAD  Download instructions
+
+\verbatim
+wget -q --no-check-certificate -O setup_git.sh https://gitlab.cern.ch/shervin/ECALELF/raw/master/setup_git.sh
+chmod +x setup_git.sh
+CMSSW_VERSION=CMSSW_9_2_14
+./setup_git.sh $CMSSW_VERSION
+cd $CMSSW_VERSION/src/
+cmsenv
+cd Calibration/ZFitter && make && cd -
+\endverbatim
+
+If you are using a tcsh shell:
+\verbatim cd Calibration && source initCmsEnv.csh \endverbatim
+
+If you are using a bash shell:
+\verbatim cd Calibration && source initCmsEnv.sh \endverbatim
+
+Every time you enter in a new shell you have to do:
+\verbatim source initCmsEnvCRAB.csh \endverbatim
+or
+\verbatim source initCmsEnvCRAB.sh \endverbatim
+
+==============================
+\section DEV How to develop in ECALELF
+\subpage NAMECONVENTIONS_
+
+==============================
+\subpage WORKNTUPLES
+
+\section Energy scales and smearings
+\subpage SCALESSMEARINGS
+
+
+\section ECALELF rereco and validations
+
+### Instructions for ECAL validator:
+ - \ref DATAFORMATS
+ - \ref pFindInfos 
+ - \ref pAlcarecoProduction
+ - \ref page5 
+ - \subpage NTUPLEPRODUCTION_
+ - \ref page7
+* 
+
+* Small developer guide: \ref Devel
+* 
+* Guide to test different steps in local: \ref _testingLocally
+### For experts:
+* \ref page2
+*/
+
