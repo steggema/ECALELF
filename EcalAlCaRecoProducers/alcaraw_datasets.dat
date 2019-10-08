@@ -1,0 +1,489 @@
+# RUNRANGE	datasetpath	DATASETNAME	STORAGE_ELEMENT	USER_REMOTE_DIR_BASE	VALIDITY	PERIOD
+# RUNRANGE used to produce the sandbox
+# DATASETPATH
+# DATASETNAME: short name to indicated the dataset, this name is given to the directory in EOS
+# STORAGE_ELEMENT: caf, T2_IT_Rome
+# USER_REMOTE_DIR_BASE: directory in the storage element after
+#                       /store/, this is just the base name, the full
+#                       path will be USER_REMOTE_DIR_BASE/ecalelf/alcaraw/ENERGY/DATASETNAME/RUNRANGE
+# VALIDITY: if this part of sandbox is actually used for rereco or is superseeded
+# PERIOD: RUN2011AB, RUN2012AB, RUN2012C these are the period
+#         indication for the rerecoSandboxQuick.sh script that will
+#         rereco all the lines with the indicated period
+#                        
+################################# RUN2011AB CMSSW_4_2_8_patch7 GT: GR_P_V22::All
+# Used for 2011 production
+#
+160329-168437	/DoubleElectron/Run2011A-ZElectron-05Jul2011ReReco-ECAL-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2011A-05Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2011A,RUN2011AB
+170053-172778	/DoubleElectron/Run2011A-ZElectron-PromptSkim-v5/RAW-RECO	DoubleElectron-ZSkim-RUN2011A-v5	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2011A,RUN2011AB
+172791-175770	/DoubleElectron/Run2011A-ZElectron-PromptSkim-v6/RAW-RECO	DoubleElectron-ZSkim-RUN2011A-v6	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2011A,RUN2011AB
+175832-180296	/DoubleElectron/Run2011B-ZElectron-PromptSkim-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2011B-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2011B,RUN2011AB
+##### SingleElectron
+#160329-168437	/SingleElectron/Run2011A-WElectron-05Jul2011ReReco-ECAL-v1/RAW-RECO	SingleElectron-WSkim-RUN2011A-05Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2011AB
+#170053-172778	/SingleElectron/Run2011A-WElectron-PromptSkim-v5/RAW-RECO	SingleElectron-WSkim-RUN2011A-v5	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2011AB
+#172791-175770	/SingleElectron/Run2011A-WElectron-PromptSkim-v6/RAW-RECO	SingleElectron-WSkim-RUN2011A-v6	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2011AB
+#175832-180296	/SingleElectron/Run2011B-WElectron-PromptSkim-v1/RAW-RECO	SingleElectron-WSkim-RUN2011B-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2011AB
+#
+# Better to not use these
+##170053-172619	/DoubleElectron/Run2011A-ZElectron-05Aug2011-v1/RAW-RECO
+##160329-163869	/DoubleElectron/Run2011A-ZElectron-May10ReReco-v1/RAW-RECO
+##165358-168437	/DoubleElectron/Run2011A-ZElectron-PromptSkim-v4/RAW-RECO
+##/DoubleElectron/Run2011A-ZElectron-03Oct2011-v1/RAW-RECO
+#
+################################# RUN2011AB CMSSW_4_4_2_patch2
+##160329-175770	/DoubleElectron/Run2011A-ZElectron-08Nov2011-v1/RAW-RECO
+##175832-180296	/DoubleElectron/Run2011B-ZElectron-19Nov2011-v1/RAW-RECO
+#
+################################# RUN2012AB CMSSW_5_2_5 (ICHEP dataset)
+#190450-193686	/DoubleElectron/Run2012A-PromptReco-v1/RECO	DoubleElectron-RUN2012A-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2012AB
+####### Rereco in 53 of 2011 data
+175832-180296	/DoubleElectron/CMSSW_5_3_4_patch2-GR_R_53_V9F_RelVal_zEl2011B-v1/RECO	DoubleElectron-ZSkim-53X_GR_R_53_V9F-RUN2011B-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2011B53X
+################################## RUN2012 CMSSW_5_3_3_patch3: invalidated because updated with Winter13 conditions
+### Run ranges 
+190456-193621	/DoubleElectron/Run2012A-ZElectron-13Jul2012-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012A-13Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	test,RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012AB,RUN2012ABC
+193834-196531	/DoubleElectron/Run2012B-ZElectron-13Jul2012-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012B-13Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012AB,RUN2012ABC
+198111-198913	/DoubleElectron/Run2012C-ZElectron-PromptSkim-v2/RAW-RECO	DoubleElectron-ZSkim-RUN2012C-v2	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012C,RUN2012ABC
+198934-203755	/DoubleElectron/Run2012C-ZElectron-PromptSkim-v3/RAW-RECO       DoubleElectron-ZSkim-RUN2012C-v3        caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2012ABCD,RUN2012C,RUN2012ABC,Cal_Dic2012
+203773-209465	/DoubleElectron/Run2012D-ZElectron-PromptSkim-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012D-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	INVALID	RUN2012D,RUN2012ABCD
+##### SingleElectron
+190456-193621	/SingleElectron/Run2012A-WElectron-13Jul2012-v1/USER	SingleElectron-WSkim-RUN2012A-13Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012AB,RUN2012ABC,
+193834-196531	/SingleElectron/Run2012B-WElectron-13Jul2012-v1/USER	SingleElectron-WSkim-RUN2012B-13Jul-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012AB,RUN2012ABC,
+198111-198913	/SingleElectron/Run2012C-WElectron-PromptSkim-v2/USER	SingleElectron-WSkim-RUN2012C-v2	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,Cal_Nov2012,Cal_Dic2012,RUN2012C,RUN2012ABC,
+198934-203755	/SingleElectron/Run2012C-WElectron-PromptSkim-v3/USER	SingleElectron-WSkim-RUN2012C-v3	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,RUN2012C,RUN2012ABC,
+203756-208686	/SingleElectron/Run2012D-WElectron-PromptSkim-v1/USER	SingleElectron-WSkim-RUN2012D-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,RUN2012D
+########################### Winter13 rereco for 2012 data
+#
+190645-193621	/DoubleElectron/Run2012A-ZElectron-22Jan2013-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012A-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012A,RUN2012AB,RUN2012ABC,RUN2012ABCD
+193834-196531	/DoubleElectron/Run2012B-ZElectron-22Jan2013-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012B-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012B,RUN2012AB,RUN2012ABC,RUN2012ABCD
+198022-203742	/DoubleElectron/Run2012C-ZElectron-22Jan2013-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012C-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012C,RUN2012ABC,RUN2012ABCD
+203777-208686	/DoubleElectron/Run2012D-ZElectron-22Jan2013-v1/RAW-RECO	DoubleElectron-ZSkim-RUN2012D-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012D,RUN2012ABCD
+#
+##### SingleElectron
+190645-193621	/SingleElectron/Run2012A-v1/RAW	SingleElectron-WSkim-RUN2012A-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012A,RUN2012AB,RUN2012ABC,RUN2012ABCD
+193834-196531	/SingleElectron/Run2012B-v1/RAW	SingleElectron-WSkim-RUN2012B-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012B,RUN2012AB,RUN2012ABC,RUN2012ABCD
+198022-203742	/SingleElectron/Run2012C-v1/RAW	SingleElectron-WSkim-RUN2012C-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012C,RUN2012ABC,RUN2012ABCD
+203777-208686	/SingleElectron/Run2012D-v1/RAW	SingleElectron-WSkim-RUN2012D-22Jan-v1	caf	group/alca_ecalcalib/ecalelf/alcaraw	VALID	RUN2012ABCD,RUN2012D
+####### Single Electron 22JanReReco from Skim 
+190645-193621 /SingleElectron/Run2012A-22Jan2013-v1/RECO  SingleElectron-Run2012A-22Jan2013-v1  caf /group/alca_ecalcalib/ecalelf/alcaraw VALID RUN2012A,RUN2012AB,RUN2012ABC,RUN2012ABCD
+193834-196531 /SingleElectron/Run2012B-22Jan2013-v1/RECO  SingleElectron-Run2012B-22Jan2013-v1  caf /group/alca_ecalcalib/ecalelf/alcaraw VALID RUN2012B,RUN2012AB,RUN2012ABC,RUN2012ABCD
+198022-203742 /SingleElectron/Run2012C-22Jan2013-v1/RECO  SingleElectron-Run2012C-22Jan2013-v1  caf /group/alca_ecalcalib/ecalelf/alcaraw VALID RUN2012C,RUN2012AB,RUN2012ABC,RUN2012ABCD
+203756-208686 /SingleElectron/Run2012D-22Jan2013-v1/AOD   SingleElectron-Run2012D-22Jan2013-v1  caf /group/alca_ecalcalib/ecalelf/alcaraw VALID RUN2012D,RUN2012AB,RUN2012ABC,RUN2012ABCD
+#################2015 RUN B DATA -- runs-> 251022-251883  #FINAL B-ON DATASET
+251022-251883 /DoubleEG/Run2015B-PromptReco-v1/AOD DoubleEG-ZSkim-RUN2015B-ALCARAW-21Jul15-v1 caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw INVALID RUN2015B,RUN2015ABCD,RUN2015BCD
+251022-251883 /SingleElectron/Run2015B-PromptReco-v1/AOD SingleElectron-ZSkim-RUN2015B-ALCARAW-21Jul15-v2 caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw VALID RUN2015B,RUN2015ABCD,RUN2015BCD
+251022-251883 /SingleElectron/Run2015B-PromptReco-v1/AOD SingleElectron-WSkim-RUN2015B-ALCARAW-21Jul15-v2 caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw INVALID RUN2015B,RUN2015ABCD,RUN2015BCD
+################ RUN2015C DATA 
+253659-254914 /SingleElectron/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO SingleElectron-ZSkim-Run2015C-01Sep15-v1 caf database INVALID RUN2015C
+253659-254914 /SingleElectron/Run2015C-EcalUncalWElectron-PromptReco-v1/ALCARECO SingleElectron-WSkim-Run2015C-01Sep15-v1 caf database INVALID RUN2015C
+253659-255031 /DoubleEG/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO DoubleEG-ZSkim-Run2015C-01Sep15-v1 caf database INVALID RUN2015C
+### These run ranges are covering also 25ns data taking in Run C
+253620-254914 /SingleElectron/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO SingleElectron-ZSkim-Run2015C-Prompt-v1-50nsReco caf database INVALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+253620-254914 /SingleElectron/Run2015C-EcalUncalWElectron-PromptReco-v1/ALCARECO SingleElectron-WSkim-Run2015C-Prompt-v1-50nsReco caf database INVALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+253620-255031 /DoubleEG/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO       DoubleEG-ZSkim-Run2015C-Prompt-v1-50nsReco       caf database INVALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+# These is the only run good at 50ns in RunC
+254833-254833 /SingleElectron/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO SingleElectron-ZSkim-Run2015C-Prompt-v1-50nsReco caf database VALID RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+254833-254833 /SingleElectron/Run2015C-EcalUncalWElectron-PromptReco-v1/ALCARECO SingleElectron-WSkim-Run2015C-Prompt-v1-50nsReco caf database VALID RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+254833-254833 /DoubleEG/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO       DoubleEG-ZSkim-Run2015C-Prompt-v1-50nsReco       caf database VALID RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015C50ns
+###
+253620-254914 /SingleElectron/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO SingleElectron-ZSkim-Run2015C-Prompt-v1-25nsReco caf database VALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015CD,RUN2015C25ns
+253620-254914 /SingleElectron/Run2015C-EcalUncalWElectron-PromptReco-v1/ALCARECO SingleElectron-WSkim-Run2015C-Prompt-v1-25nsReco caf database VALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015CD,RUN2015C25ns
+253620-255031 /DoubleEG/Run2015C-EcalUncalZElectron-PromptReco-v1/ALCARECO       DoubleEG-ZSkim-Run2015C-Prompt-v1-25nsReco       caf database VALID RUN2015C,RUN2015BC,RUN2015ABC,RUN2015ABCD,RUN2015BCD,RUN2015CD,RUN2015C25ns
+### Why the run numbers are different for SingleEle and DoubleEG?
+################# Run2015B 
+251096-253620 /DoubleEG/Run2015B-PromptReco-v1/RECO        DoubleEG-ZSkim-RUN2015B-Prompt-v1-50nsReco       caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw VALID RUN2015B,RUN2015ABCD,RUN2015BCD,RUN2015BC,RUN2015AB
+251096-253620 /SingleElectron/Run2015B-PromptReco-v1/RECO  SingleElectron-WSkim-RUN2015B-Prompt-v1-50nsReco caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw VALID RUN2015B,RUN2015ABCD,RUN2015BCD,RUN2015BC,RUN2015AB
+############### Ru2015C 25ns rereco
+254227-255031 /DoubleEG/Run2015C_25ns-05Oct2015-v1/RECO		DoubleEG-ZSkim-Run2015C-rereco05Oct2015-25nsReco		caf group/dpg_ecal/alca_ecalcalib/ecalelf/alcaraw INVALID RUN2015C,RUN2015CD
+################ RUN2015D DATA 
+256584-257611 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v3-25nsReco caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+256584-257611 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v3/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v3-25nsReco caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+256584-257611 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v3-25nsReco       caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+#
+257612-258158 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v3-25nsReco caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+257612-258158 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v3/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v3-25nsReco caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+257612-258158 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v3-25nsReco       caf database INVALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD
+#
+256584-258158 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v3-25nsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+256584-258158 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v3/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v3-25nsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+256584-258158 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v3-25nsReco       caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+#
+258159-260737 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v4-25nsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+258159-260737 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v4/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v4-25nsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+258159-260737 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v4-25nsReco       caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+#
+#########################
+################ RUN2015D DATA 
+256584-258158 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v3-weightsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+256584-258158 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v3/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v3-weightsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+256584-258158 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v3-weightsReco       caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+#
+258159-260737 /SingleElectron/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO SingleElectron-ZSkim-Run2015D-Prompt-v4-weightsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+258159-260737 /SingleElectron/Run2015D-EcalUncalWElectron-PromptReco-v4/ALCARECO SingleElectron-WSkim-Run2015D-Prompt-v4-weightsReco caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+258159-260737 /DoubleEG/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO       DoubleEG-ZSkim-Run2015D-Prompt-v4-weightsReco       caf database VALID RUN2015D,RUN2015CD,RUN2015BCD,RUN2015ABCD,Cal_Nov2015
+#
+257032-257059 /DoubleEG_0T/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG_0T-ZSkim-Run2015D-Prompt-v3-25nsReco       caf database VALID RUN2015DBoff,RUN2015CDBoff
+258159-260737 /DoubleEG_0T/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO       DoubleEG_0T-ZSkim-Run2015D-Prompt-v4-25nsReco       caf database VALID RUN2015DBoff,RUN2015CDBoff
+255910-256245 /DoubleEG_0T/Run2015C-EcalUncalZElectron-PromptReco-v2/ALCARECO			DoubleEG_0T-ZSkim-Run2015C-Prompt-v2-25nsReco       caf database VALID RUN2015CBoff,RUN2015CDBoff
+256268-256464 /DoubleEG_0T/Run2015C-EcalUncalZElectron-PromptReco-v3/ALCARECO			DoubleEG_0T-ZSkim-Run2015C-Prompt-v3-25nsReco       caf database VALID RUN2015CBoff,RUN2015CDBoff
+#
+257032-257059 /DoubleEG_0T/Run2015D-EcalUncalZElectron-PromptReco-v3/ALCARECO       DoubleEG_0T-ZSkim-Run2015D-Prompt-v3-weightsReco       caf database VALID RUN2015DBoff,RUN2015CDBoff
+258159-260737 /DoubleEG_0T/Run2015D-EcalUncalZElectron-PromptReco-v4/ALCARECO       DoubleEG_0T-ZSkim-Run2015D-Prompt-v4-weightsReco       caf database VALID RUN2015DBoff,RUN2015CDBoff
+255910-256245 /DoubleEG_0T/Run2015C-EcalUncalZElectron-PromptReco-v2/ALCARECO			DoubleEG_0T-ZSkim-Run2015C-Prompt-v2-weightsReco       caf database VALID RUN2015CBoff,RUN2015CDBoff
+256268-256464 /DoubleEG_0T/Run2015C-EcalUncalZElectron-PromptReco-v3/ALCARECO			DoubleEG_0T-ZSkim-Run2015C-Prompt-v3-weightsReco       caf database VALID RUN2015CBoff,RUN2015CDBoff
+#########################
+################ RUN2016 DATA 
+272023-273146	/DoubleEG/Run2016B-EcalUncalZElectron-PromptReco-v1/ALCARECO DoubleEG-ZSkim-Run2016B-Prompt-v1	caf database	INVALID RUN2016B
+273150-274334	/DoubleEG/Run2016B-EcalUncalZElectron-PromptReco-v2/ALCARECO DoubleEG-ZSkim-Run2016B-Prompt-v2	caf database	INVALID RUN2016B
+273150-274443	/DoubleEG/Run2016B-EcalUncalZElectron-PromptReco-v2/ALCARECO DoubleEG-ZSkim-Run2016B-Prompt-v2	caf database	INVALID RUN2016B,CAL_JUN2016
+273150-274443	/SingleElectron/Run2016B-EcalUncalWElectron-PromptReco-v2/ALCARECO SingleElectron-WSkim-Run2016B-Prompt-v2	caf database	INVALID RUN2016B,CAL_JUN2016
+278817-279887	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2
+278817-279588	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2
+279589-279931	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2
+278817-279588	/SingleElectron/Run2016G-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016G-WSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2
+279589-279931	/SingleElectron/Run2016G-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016G-WSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2
+278817-279931	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2,LEGACY2016
+279932-280385	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	INVALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2,LEGACY2016
+#
+272023-273146	/DoubleEG/Run2016B-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016B-ZSkim-Prompt_v1	caf	database	VALID	RUN2016X
+273150-275376	/DoubleEG/Run2016B-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2016B-ZSkim-Prompt_v2	caf	database	VALID	RUN2016B,RUN2016BC,RUN2016BCD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+275420-276283	/DoubleEG/Run2016C-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2016C-ZSkim-Prompt_v2	caf	database	VALID	RUN2016C,RUN2016BC,RUN2016BCD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+276315-276811	/DoubleEG/Run2016D-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2016D-ZSkim-Prompt_v2	caf	database	VALID	RUN2016D,RUN2016BCD,RUN2016CD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+276830-277420	/DoubleEG/Run2016E-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2016E-ZSkim-Prompt-v2	caf	database	VALID	RUN2016E,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+277820-278808	/DoubleEG/Run2016F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016F-ZSkim-Prompt-v1	caf	database	VALID	RUN2016F,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+278817-280385	/DoubleEG/Run2016G-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016G-ZSkim-Prompt-v1	caf	database	VALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2,LEGACY2016
+# The following RUNH is not good in golden json
+281085-281201	/DoubleEG/Run2016H-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2016H-ZSkim-Prompt-v1	caf	database	VALID	RUN2016H,RUN2016CDEFGH
+281207-284035	/DoubleEG/Run2016H-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2016H-ZSkim-Prompt-v2	caf	database	VALID	RUN2016H,RUN2016CDEFGH,LEGACY2016
+284036-284068	/DoubleEG/Run2016H-EcalUncalZElectron-PromptReco-v3/ALCARECO	DoubleEG-Run2016H-ZSkim-Prompt-v3	caf	database	VALID	RUN2016H,RUN2016CDEFGH,LEGACY2016
+#
+272023-273146	/SingleElectron/Run2016B-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016B-WSkim-Prompt_v1	caf	database	VALID	RUN2016B
+273150-275376	/SingleElectron/Run2016B-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2016B-WSkim-Prompt_v2	caf	database	VALID	RUN2016B,RUN2016BC,RUN2016BCD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+275420-276283	/SingleElectron/Run2016C-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2016C-WSkim-Prompt_v2	caf	database	VALID	RUN2016C,RUN2016BC,RUN2016BCD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+276315-276811	/SingleElectron/Run2016D-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2016D-WSkim-Prompt_v2	caf	database	VALID	RUN2016D,RUN2016BCD,RUN2016CD,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+276830-277420	/SingleElectron/Run2016E-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2016E-WSkim-Prompt-v2	caf	database	VALID	RUN2016E,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+277820-278808	/SingleElectron/Run2016F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016F-WSkim-Prompt-v1	caf	database	VALID	RUN2016F,RUN2016CDEFG,CAL_SEP2016,CAL_SEP2016_V2,LEGACY2016
+278817-280385	/SingleElectron/Run2016G-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016G-WSkim-Prompt-v1	caf	database	VALID	RUN2016G,RUN2016CDEFG,CAL_SEP2016_V2,LEGACY2016
+281085-281201	/SingleElectron/Run2016H-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2016H-WSkim-Prompt-v1	caf	database	VALID	RUN2016H,RUN2016CDEFGH,CAL_NOV2016_V1
+281207-284035	/SingleElectron/Run2016H-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2016H-WSkim-Prompt-v2	caf	database	VALID	RUN2016H,RUN2016CDEFGH,CAL_NOV2016_V1,LEGACY2016
+284036-284068	/SingleElectron/Run2016H-EcalUncalWElectron-PromptReco-v3/ALCARECO	SingleElectron-Run2016H-WSkim-Prompt-v3	caf	database	VALID	RUN2016H,RUN2016CDEFGH,CAL_NOV2016_V1,LEGACY2016
+#
+296168-296174	/DoubleEG/Run2017A-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017A-ZSkim-Prompt-v2	caf	database	VALID	RUN2017A
+296880-297004	/DoubleEG/Run2017A-EcalUncalZElectron-PromptReco-v3/ALCARECO	DoubleEG-Run2017A-ZSkim-Prompt-v3	caf	database	VALID	RUN2017A
+297046-297723	/DoubleEG/Run2017B-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017B-ZSkim-Prompt-v1	caf	database	VALID	RUN2017B,RUN2017,RUN2017BCDE
+298678-299329	/DoubleEG/Run2017B-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017B-ZSkim-Prompt-v2	caf	database	VALID	RUN2017B,RUN2017,RUN2017BCDE
+299368-299420	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017C,RUN2017,RUN2017BCDE
+299368-299649	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v1	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE
+299929-300676	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v2	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE
+300742-302029	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v3/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v3	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE
+302030-302663	/DoubleEG/Run2017D-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017D-ZSkim-Prompt-v1	caf	database	VALID	RUN2017D,RUN2017,RUN2017BCDE
+303574-304797	/DoubleEG/Run2017E-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017E-ZSkim-Prompt-v1	caf	database	VALID	RUN2017E,RUN2017,RUN2017EF,RUN2017BCDE
+305040-305364   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+305040-305636   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+305040-306460   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	VALID	RUN2017F,RUN2017,RUN2017EF
+#
+296168-296174	/SingleElectron/Run2017A-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017A-WSkim-Prompt-v2	caf	database	VALID	RUN2017A
+296880-297004	/SingleElectron/Run2017A-EcalUncalWElectron-PromptReco-v3/ALCARECO	SingleElectron-Run2017A-WSkim-Prompt-v3	caf	database	VALID	RUN2017A
+297046-297723	/SingleElectron/Run2017B-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017B-WSkim-Prompt-v1	caf	database	VALID	RUN2017B,RUN2017
+298678-299329	/SingleElectron/Run2017B-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017B-WSkim-Prompt-v2	caf	database	VALID	RUN2017B,RUN2017
+299368-299420	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v1	caf	database	INVALID	RUN2017C,RUN2017
+299368-299649	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v1	caf	database	VALID	RUN2017C,RUN2017
+299929-300676	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v2	caf	database	VALID	RUN2017C,RUN2017
+300742-302029	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v3/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v3	caf	database	VALID	RUN2017C,RUN2017
+302030-302663	/SingleElectron/Run2017D-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017D-WSkim-Prompt-v1	caf	database	VALID	RUN2017D,RUN2017
+303574-304797	/SingleElectron/Run2017E-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017E-WSkim-Prompt-v1	caf	database	VALID	RUN2017E,RUN2017,RUN2017EF
+305040-305364   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+305040-305636   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+305040-306460   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	VALID	RUN2017F,RUN2017,RUN2017EF
+### ALCARECO MC
+allRange   /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17DRPremix-EcalUncalZElectron-RECOSIMstep_94X_mc2017_realistic_v10-v1/ALCARECO   DYJets_M50-CP5-madgraph-RunIIFall17-94Xmc17v10        caf     database        VALID   RUN2017MCALCARECO
+##################################################################################2018###########################################################
+##### 
+315357-315488 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018,RUN2018A,RUN2018A_2018-05-04
+315357-315488 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A,RUN2018A_2018-05-04
+##### 
+315357-315420 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+315357-315420 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+##### 
+315488-315512 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+315488-315512 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+##### 
+315543-315647 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+315543-315647 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+##### 
+315648-315703 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+315648-315703 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-08
+##### 
+315704-315721 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+315704-315721 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+##### 
+315741-315790 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+315741-315790 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+##### 
+315800-315840 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+315800-315840 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-10
+##### 
+315973-316060 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-14
+315973-316060 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-14
+##### 
+316061-316114 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-14
+316061-316114 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-14
+##### 
+316151-316187 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-16
+316151-316187 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-16
+##### 
+316199-316217 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-16
+316199-316217 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-16
+#####
+316218-316239 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-17
+316218-316239 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database INVALID RUN2018A_2018-05-17
+##### 
+316240-316380 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-20
+316240-316380 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-20
+##### 
+316455-316470 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-22
+316455-316470 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-22
+##### 
+316472-316569 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-22
+316472-316569 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-22
+##### 
+316590-316666 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-25
+316590-316666 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-25
+##### 
+316667-316718 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-25
+316667-316718 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database INVALID RUN2018A_2018-05-25
+##### 
+315357-315689 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_NPT
+315357-315689 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_NPT
+##### 
+315690-316058 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_NPT
+315690-316058 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_NPT
+##### 
+316059-316199 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+316059-316199 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+##### 
+316200-316219 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+316200-316219 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+##### 
+316239-316569 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+316239-316569 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP
+##### 
+316590-316766 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP,RUN2018A_2018-05-31_NT
+316590-316766 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP,RUN2018A_2018-05-31_NT
+##### 
+316876-316944 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP,RUN2018A_2018-05-31_NT
+316876-316944 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database VALID RUN2018A_2018-05-31,RUN2018A_2018-05-31_PP,RUN2018A_2018-05-31_NT
+##### 
+316985-316995 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v3 caf database VALID RUN2018A_2018-06-06
+316985-316995 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-WSkim-Prompt-v3 caf database VALID RUN2018A_2018-06-06
+##### 
+317080-317320 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-06
+317080-317320 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-06
+##### 
+317338-317527 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-10
+317338-317527 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-10
+##### 
+317591-317663 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-16
+317591-317663 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018B_2018-06-16
+############
+315357-315689 /EGamma/amassiro-crab_ZElectron-PromptReco-v1-419b2674eb34923977564f218c108f7e/USER EGamma-Run2018B-ZSkim-trackRereco-v1 caf database VALID RUN2018A_NPT_rerecoAndrea
+###########
+315690-316058 /EGamma/amassiro-crab_ZElectron-PromptReco-v1-419b2674eb34923977564f218c108f7e/USER EGamma-Run2018B-ZSkim-trackRereco-v1 caf database VALID RUN2018A_NPT_rerecoAndrea
+######################
+315506-315512 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-1_AT
+315589-315690 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-3_AT
+315784-315790 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-6_AT
+316109-316114 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-10_AT
+316469-316472 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-17_AT
+316876-316944 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-24_AT
+317212-317213 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-AlphaTag caf database VALID RUN2018A_2018-05-31_AT
+#####
+##### 
+317683-317864 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018B_2018-07-03,RUN2018Bv1_missingRuns
+317683-317864 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018B_2018-07-03,RUN2018Bv1_missingRuns
+##### 
+318733-319311 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018B_2018-07-16
+318733-319311 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018B_2018-07-16
+##### 
+318563-319311 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v2 caf database VALID RUN2018Bv2_missingRuns
+318733-319311 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v2 caf database VALID RUN2018Bv2_missingRuns
+#################
+319337-319349 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v1 caf database VALID RUN2018C_2018-07-16
+319337-319349 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018C-WSkim-Prompt-v1 caf database VALID RUN2018C_2018-07-16
+##### 
+319449-319625 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v2 caf database VALID RUN2018C_2018-07-18
+319449-319625 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-WSkim-Prompt-v2 caf database VALID RUN2018C_2018-07-18
+######
+316751-316766 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-WSkim-Prompt-v3 caf database VALID ESCalibHG_316766
+316751-316766 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v3 caf database VALID ESCalibHG_316766
+#######
+316767-316995 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-WSkim-Prompt-v3 caf database VALID ESCalibLG_316766
+316767-316995 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v3 caf database VALID ESCalibLG_316766
+#######
+317080-317864 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID ESCalibLG_316766
+317080-317864 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID ESCalibLG_316766
+##### 
+319639-319756 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v2 caf database VALID RUN2018C_2018-07-23
+319639-319756 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-WSkim-Prompt-v2 caf database VALID RUN2018C_2018-07-23
+##### 
+315257-315974 /EGamma/Run2018A-EcalUncalZElectron-22Jun2018-v1/ALCARECO EGamma-Run2018A-ZSkim-22Jun2018-v1 caf database VALID RUN2018Av1Rereco_2018
+315257-315974 /EGamma/Run2018A-EcalUncalWElectron-22Jun2018-v1/ALCARECO EGamma-Run2018A-WSkim-22Jun2018-v1 caf database VALID RUN2018Av1Rereco_2018
+#####
+315975-316219 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v1 caf database VALID RUN2018Av1v2_2018
+315357-316219 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018A-WSkim-Prompt-v1 caf database VALID RUN2018Av1v2_2018
+##### 
+316239-316944 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v2 caf database VALID RUN2018Av1v2_2018
+316239-316944 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018A-WSkim-Prompt-v2 caf database VALID RUN2018Av1v2_2018
+#######
+##### 
+316506-316944 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v3 caf database VALID RUN2018Av3_2018
+316506-316944 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-WSkim-Prompt-v3 caf database VALID RUN2018Av3_2018
+#######
+316985-316995 /EGamma/Run2018A-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-WSkim-Prompt-v3 caf database VALID RUN2018Av3_2018
+316985-316995 /EGamma/Run2018A-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018A-ZSkim-Prompt-v3 caf database VALID RUN2018Av3_2018
+#######
+317080-317864 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v1 caf database VALID RUN2018Bv1_2018
+317080-317864 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018B-WSkim-Prompt-v1 caf database VALID RUN2018Bv1_2018
+#######
+318563-319311 /EGamma/Run2018B-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018B-ZSkim-Prompt-v2 caf database VALID RUN2018Bv2_2018
+318563-319311 /EGamma/Run2018B-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018B-WSkim-Prompt-v2 caf database VALID RUN2018Bv2_2018
+##### 
+319840-320024 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v3 caf database VALID RUN2018C_2018-07-27
+319840-320024 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-WSkim-Prompt-v3 caf database VALID RUN2018C_2018-07-27
+#######
+319337-319349 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v1 caf database VALID RUN2018C_2018
+319337-319349 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v1/ALCARECO EGamma-Run2018C-WSkim-Prompt-v1 caf database VALID RUN2018C_2018
+##### 
+319447-319756 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v2 caf database VALID RUN2018C_2018
+319447-319756 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018C-WSkim-Prompt-v2 caf database VALID RUN2018C_2018
+##### 
+319840-320340 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v3 caf database VALID RUN2018C_2018
+319840-320340 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-WSkim-Prompt-v3 caf database VALID RUN2018C_2018
+#######
+##### 
+320025-320369 /EGamma/Run2018C-EcalUncalZElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-ZSkim-Prompt-v3 caf database VALID RUN2018C_2018-08-01
+320025-320369 /EGamma/Run2018C-EcalUncalWElectron-PromptReco-v3/ALCARECO EGamma-Run2018C-WSkim-Prompt-v3 caf database VALID RUN2018C_2018-08-01
+##### 
+320500-320887 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+320500-320887 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+##### 
+320888-321067 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+320888-321067 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+##### 
+321068-321218 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+321068-321218 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-16
+##### 
+321219-321397 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-27
+321219-321397 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-27
+##### 
+321414-321712 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-27
+321414-321712 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-08-27
+##### 
+321730-321831 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-02
+321730-321831 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-02
+#####
+322057-322106 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_preshowerOffChecks322088
+##### 
+##### 
+321832-321973 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+321832-321973 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+##### 
+321975-322118 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+321975-322118 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+##### 
+322179-322332 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+322179-322332 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+##### 
+322348-322599 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+322348-322599 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-09-17
+########
+320370-320674 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v1/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v1 caf database VALID RUN2018Dv1HG
+320675-321538 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v1 caf database VALID RUN2018Dv1LG
+321539-321735 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018Dv2HG
+321736-323351 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018Dv2LG
+######### 
+322602-323696 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-09
+322602-323696 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-09
+##### 
+323702-323940 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-09v7
+323702-323940 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-09v7
+#########ALCARECO MC
+allRange   /DYToEE_M-50_NNPDF31_TuneCP5_13TeV-powheg-pythia8/RunIIFall18DRPremix-EcalUncalZElectron-102X_upgrade2018_realistic_v11-v1/ALCARECO  DYToEE_M-50_NNPDF31_TuneCP5_13TeV-powheg-pythia8    caf     database        VALID   RUN2018MCALCARECOv1
+##### 
+323954-324293 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-22
+323954-324293 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-22
+##### 
+324315-324878 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-22
+324315-324878 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-10-22
+##### 
+324897-325097 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-11-10
+324897-325097 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-11-10
+##### 
+325098-325175 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018D_2018-11-10
+325098-325175 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018D_2018-11-10
+#
+#296168-296174	/DoubleEG/Run2017A-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017A-ZSkim-Prompt-v2	caf	database	VALID	RUN2017A,RUN2017UR,RUN2017URZEE
+#296880-297004	/DoubleEG/Run2017A-EcalUncalZElectron-PromptReco-v3/ALCARECO	DoubleEG-Run2017A-ZSkim-Prompt-v3	caf	database	VALID	RUN2017A,RUN2017UR,RUN2017URZEE
+297046-297723	/DoubleEG/Run2017B-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017B-ZSkim-Prompt-v1	caf	database	VALID	RUN2017B,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+298678-299329	/DoubleEG/Run2017B-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017B-ZSkim-Prompt-v2	caf	database	VALID	RUN2017B,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+299368-299420	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017C,RUN2017,RUN2017BCDE,RUN2017URZEE
+299368-299649	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v1	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+299929-300676	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v2/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v2	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+300742-302029	/DoubleEG/Run2017C-EcalUncalZElectron-PromptReco-v3/ALCARECO	DoubleEG-Run2017C-ZSkim-Prompt-v3	caf	database	VALID	RUN2017C,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+302030-302663	/DoubleEG/Run2017D-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017D-ZSkim-Prompt-v1	caf	database	VALID	RUN2017D,RUN2017,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+303574-304797	/DoubleEG/Run2017E-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017E-ZSkim-Prompt-v1	caf	database	VALID	RUN2017E,RUN2017,RUN2017EF,RUN2017BCDE,RUN2017UR,RUN2017URZEE
+#305040-305364   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017,RUN2017URZEE
+#305040-305636   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017,RUN2017URZEE
+305040-306460   /DoubleEG/Run2017F-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017F-ZSkim-Prompt-v1	caf	database	VALID	RUN2017F,RUN2017,RUN2017EF,RUN2017UR,RUN2017URZEE
+#
+##296168-296174	/SingleElectron/Run2017A-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017A-WSkim-Prompt-v2	caf	database	VALID	RUN2017A,RUN2017UR
+##296880-297004	/SingleElectron/Run2017A-EcalUncalWElectron-PromptReco-v3/ALCARECO	SingleElectron-Run2017A-WSkim-Prompt-v3	caf	database	VALID	RUN2017A,RUN2017UR
+297046-297723	/SingleElectron/Run2017B-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017B-WSkim-Prompt-v1	caf	database	VALID	RUN2017B,RUN2017,RUN2017UR
+298678-299329	/SingleElectron/Run2017B-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017B-WSkim-Prompt-v2	caf	database	VALID	RUN2017B,RUN2017,RUN2017UR
+299368-299420	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v1	caf	database	INVALID	RUN2017C,RUN2017
+299368-299649	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v1	caf	database	VALID	RUN2017C,RUN2017,RUN2017UR
+299929-300676	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v2	caf	database	VALID	RUN2017C,RUN2017,RUN2017UR
+300742-302029	/SingleElectron/Run2017C-EcalUncalWElectron-PromptReco-v3/ALCARECO	SingleElectron-Run2017C-WSkim-Prompt-v3	caf	database	VALID	RUN2017C,RUN2017,RUN2017UR
+302030-302663	/SingleElectron/Run2017D-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017D-WSkim-Prompt-v1	caf	database	VALID	RUN2017D,RUN2017,RUN2017UR
+303574-304797	/SingleElectron/Run2017E-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017E-WSkim-Prompt-v1	caf	database	VALID	RUN2017E,RUN2017,RUN2017EF,RUN2017UR
+#305040-305364   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+#305040-305636   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	INVALID	RUN2017F,RUN2017
+305040-306460   /SingleElectron/Run2017F-EcalUncalWElectron-PromptReco-v1/ALCARECO	SingleElectron-Run2017F-WSkim-Prompt-v1	caf	database	VALID	RUN2017F,RUN2017,RUN2017EF,RUN2017UR
+#######
+allRange       /DYJetsToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18DR-EcalUncalZElectron-2016GT_102X_mc2017_realistic_UL_v1-v1/ALCARECO       DYJetsToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8  caf   database   VALID   RUN2018AutumnMC
+###############
+#297046-297047	/DoubleEG/Run2017B-EcalUncalZElectron-PromptReco-v1/ALCARECO	DoubleEG-Run2017B-ZSkim-Prompt-v1	caf	database	VALID	TEST
+298996-298997	/SingleElectron/Run2017B-EcalUncalWElectron-PromptReco-v2/ALCARECO	SingleElectron-Run2017B-WSkim-Prompt-v2	caf	database	VALID	TEST
+#########################
+######################################################2018 Dataset################################################################
+315252-316995 /EGamma/Run2018A-EcalUncalZElectron-17Sep2018-v2/ALCARECO  EGamma-Run2018A-ZSkim-17Sep2018-v2 caf database VALID RUN2018_RERECO,RUN2018A_RERECO
+316998-319312 /EGamma/Run2018B-EcalUncalZElectron-17Sep2018-v1/ALCARECO  EGamma-Run2018B-ZSkim-17Sep2018-v1 caf database VALID RUN2018_RERECO,RUN2018B_RERECO
+319313-320393 /EGamma/Run2018C-EcalUncalZElectron-17Sep2018-v1/ALCARECO  EGamma-Run2018C-ZSkim-17Sep2018-v1 caf database VALID RUN2018_RERECO,RUN2018C_RERECO
+320394-325273 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v1/ALCARECO  EGamma-Run2018D-ZSkim-Prompt-v1 caf database VALID RUN2018_RERECO,RUN2018D_RERECO
+320394-325273 /EGamma/Run2018D-EcalUncalZElectron-PromptReco-v2/ALCARECO  EGamma-Run2018D-ZSkim-Prompt-v2 caf database VALID RUN2018_RERECO,RUN2018D_RERECO
+#############################################################################################################################################
+315252-316995 /EGamma/Run2018A-EcalUncalWElectron-17Sep2018-v2/ALCARECO  EGamma-Run2018A-WSkim-17Sep2018-v2 caf database VALID RUN2018_RERECO,RUN2018A_RERECO
+316998-319312 /EGamma/Run2018B-EcalUncalWElectron-17Sep2018-v1/ALCARECO  EGamma-Run2018B-WSkim-17Sep2018-v1 caf database VALID RUN2018_RERECO,RUN2018B_RERECO
+319313-320393 /EGamma/Run2018C-EcalUncalWElectron-17Sep2018-v1/ALCARECO  EGamma-Run2018C-WSkim-17Sep2018-v1 caf database VALID RUN2018_RERECO,RUN2018C_RERECO
+320394-325273 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v1/ALCARECO  EGamma-Run2018D-WSkim-Prompt-v1 caf database VALID RUN2018_RERECO,RUN2018D_RERECO
+320394-325273 /EGamma/Run2018D-EcalUncalWElectron-PromptReco-v2/ALCARECO  EGamma-Run2018D-WSkim-Prompt-v2 caf database VALID RUN2018_RERECO,RUN2018D_RERECO
+##########################################
+allRange   /DYJetsToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18DR-EcalUncalZElectron-2018GT_102X_upgrade2018_realistic_UL_v1-v1/ALCARECO  DYToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8    caf     database        VALID   RUN2018MCnewReg
+#####################################################################################################################
+272023-273146  /DoubleEG/Run2016B-EcalUncalZElectron-07Aug17_ver1-v1/ALCARECO DoubleEG-ZSkim-Run2016B-07Aug17_ver1   caf database    VALID RUN2016B,RUN2016Rereco
+273150-275376  /DoubleEG/Run2016B-EcalUncalZElectron-07Aug17_ver2-v2/ALCARECO DoubleEG-ZSkim-Run2016B-07Aug17_ver2   caf database    VALID RUN2016B,RUN2016Rereco
+275420-276283  /DoubleEG/Run2016C-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016C-07Aug17_v1     caf database    VALID RUN2016C,RUN2016Rereco
+276315-276811  /DoubleEG/Run2016D-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016D-07Aug17_v1     caf database    VALID RUN2016D,RUN2016Rereco
+276830-277420  /DoubleEG/Run2016E-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016E-07Aug17_v1     caf database    VALID RUN2016E,RUN2016Rereco
+277820-278808  /DoubleEG/Run2016F-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016F-07Aug17_v1     caf database    VALID RUN2016F,RUN2016Rereco
+278817-280385  /DoubleEG/Run2016G-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016G-07Aug17_v1     caf database    VALID RUN2016G,RUN2016Rereco
+281085-284044  /DoubleEG/Run2016H-EcalUncalZElectron-07Aug17-v1/ALCARECO      DoubleEG-ZSkim-Run2016H-07Aug17_v1     caf database    VALID RUN2016H,RUN2016Rereco
+#####################################################################################################################
+272023-273146  /SingleElectron/Run2016B-EcalUncalWElectron-07Aug17_ver1-v1/ALCARECO SingleElectron-WSkim-Run2016B-07Aug17_ver1   caf database    VALID RUN2016B,RUN2016Rereco
+273150-275376  /SingleElectron/Run2016B-EcalUncalWElectron-07Aug17_ver2-v2/ALCARECO SingleElectron-WSkim-Run2016B-07Aug17_ver2   caf database    VALID RUN2016B,RUN2016Rereco
+275420-276283  /SingleElectron/Run2016C-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016C-07Aug17_v1     caf database    VALID RUN2016C,RUN2016Rereco
+276315-276811  /SingleElectron/Run2016D-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016D-07Aug17_v1     caf database    VALID RUN2016D,RUN2016Rereco
+276830-277420  /SingleElectron/Run2016E-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016E-07Aug17_v1     caf database    VALID RUN2016E,RUN2016Rereco
+277820-278808  /SingleElectron/Run2016F-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016F-07Aug17_v1     caf database    VALID RUN2016F,RUN2016Rereco
+278817-280385  /SingleElectron/Run2016G-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016G-07Aug17_v1     caf database    VALID RUN2016G,RUN2016Rereco
+281085-284044  /SingleElectron/Run2016H-EcalUncalWElectron-07Aug17-v1/ALCARECO      SingleElectron-WSkim-Run2016H-07Aug17_v1     caf database    VALID RUN2016H,RUN2016Rereco
+#############################################################################

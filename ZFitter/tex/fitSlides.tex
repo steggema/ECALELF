@@ -1,0 +1,77 @@
+%% ------------------------------------------------------------
+%% ------------------------------------------------------------
+\subsection{Plots}
+%% ------------------------------------------------------------
+%----------------------------------------------------------
+\begin{frame}
+  \frametitle{Data/MC comparison: inclusive}
+  \framesubtitle{\invMassVarName}
+
+  \dualslide{
+    \begin{tikzpicture}
+      \node{
+%        \IfFileExists{\imgDir/\invMassVarName-EB}{\includegraphics[width=\textwidth]{\imgDir/\invMassVarName-EB}}{not found}
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EB-bad}
+      };
+      \node at (-0.9,1.6){Ecal Barrel};
+%      \node at (-0.9,1.2){$\RNINE < 0.94$};
+    \end{tikzpicture}
+  }{
+    \begin{tikzpicture}
+      \node{
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EE-bad}
+      };
+      \node at (-0.9,1.6){Ecal Endcap};
+%      \node at (-0.9,1.2){$\RNINE < 0.94$};
+    \end{tikzpicture}
+  }
+\end{frame}
+
+%% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{Data/MC comparison: $\RNINE > 0.94$}
+  \framesubtitle{\invMassVarName}
+
+  \dualslide{
+    \begin{tikzpicture}
+      \node{
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EB-gold}
+      };
+      \node at (-0.9,1.6){Ecal Barrel};
+      \node at (-0.9,1.2){$\RNINE > 0.94$};
+    \end{tikzpicture}
+  }{
+    \begin{tikzpicture}
+      \node{
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EE-gold}
+      };
+      \node at (-0.9,1.6){Ecal Endcap};
+      \node at (-0.9,1.2){$\RNINE > 0.94$};
+    \end{tikzpicture}
+  }
+\end{frame}
+
+%% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{Data/MC comparison: $\RNINE < 0.04$}
+  \framesubtitle{\invMassVarName}
+
+  \dualslide{
+    \begin{tikzpicture}
+      \node{
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EB-bad}
+      };
+      \node at (-0.9,1.6){Ecal Barrel};
+      \node at (-0.9,1.2){$\RNINE < 0.94$};
+    \end{tikzpicture}
+  }{
+    \begin{tikzpicture}
+      \node{
+        \includegraphics[width=\textwidth]{\imgDir/invMass_ECAL_ele-EE-bad}
+      };
+      \node at (-0.9,1.6){Ecal Endcap};
+      \node at (-0.9,1.2){$\RNINE < 0.94$};
+    \end{tikzpicture}
+  }
+\end{frame}
+

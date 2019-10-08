@@ -1,0 +1,17 @@
+[lxplus052@python] diff out /afs/cern.ch/work/e/ecalmon/cmssw/CMSSW_10_1_2_patch2/src/Calibration/EcalAlCaRecoProducers/prod_alcarereco/101X_v9_Ped25July_PSJuly2018_EoPcorr_pre24may/EGamma-Run2018A-ZSkim-Prompt-v2/316239-316505/share/out
+9c9,11
+< double                                "fixedGridRhoFastjetAll"    ""                "RECO"    
+---
+> double                                "kt6PFJetsForRhoCorrection"   "rho"             "RECO"    
+> edm::AssociationMap<edm::OneToOne<vector<Trajectory>,vector<reco::GsfTrack>,unsigned short> >    "electronGsfTracks"         ""                "RECO"    
+> edm::AssociationMap<edm::OneToOne<vector<Trajectory>,vector<reco::GsfTrack>,unsigned short> >    "uncleanedOnlyElectronGsfTracks"   ""                "RECO"    
+31a34
+> edm::ValueMap<edm::Ref<vector<reco::GsfElectron>,reco::GsfElectron,edm::refhelper::FindUsingAdvance<vector<reco::GsfElectron>,reco::GsfElectron> > >    "gedGsfElectronsTmp"        ""                "RECO"    
+48a52
+> vector<reco::Conversion>              "conversions"               "uncleanedConversions"   "RECO"    
+49a54
+> vector<reco::GsfElectron>             "gedGsfElectronsTmp"        ""                "RECO"    
+51a57
+> vector<reco::GsfTrack>                "uncleanedOnlyElectronGsfTracks"   ""                "RECO"    
+52a59
+> vector<reco::GsfTrackExtra>           "uncleanedOnlyElectronGsfTracks"   ""                "RECO"    
