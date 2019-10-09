@@ -38,6 +38,10 @@ Every time you enter in a new shell you have to do:
 or
 `source initCmsEnv.sh`
 
+```bash
+Make sure that in python/alcaSkimming.py, the eras is set according to the year (if needed). 
+Currently for this branch, era is set to 2016 e.g: process = cms.Process(processName,eras.Run2_2016)  
+```
 
 -----
 Code documentation:
