@@ -14,6 +14,8 @@ Be sure to have a GitHub account and have followed the instructions here:
 Download instructions.
 
 ```
+(logging on lxplus 7)
+ssh -XY <name>@lxplus-t0.cern.ch
 cmsrel CMSSW_10_3_2
 cd CMSSW_10_3_2/src
 git init
