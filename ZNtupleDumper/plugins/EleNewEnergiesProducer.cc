@@ -65,11 +65,10 @@
 
 #include "DataFormats/EgammaCandidates/interface/ConversionFwd.h"
 #include "RecoEgamma/EgammaElectronAlgos/interface/ConversionFinder.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionInfo.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionTools.h"
+#include "CommonTools/Egamma/interface/ConversionTools.h"
 
 
-#include "RecoEgamma/EgammaTools/interface/SCEnergyCorrectorSemiParm.h"
+#include "RecoEcal/EgammaClusterAlgos/interface/SCEnergyCorrectorSemiParm.h"
 
 #include "DataFormats/Common/interface/View.h"
 #include "DataFormats/PatCandidates/interface/Electron.h"

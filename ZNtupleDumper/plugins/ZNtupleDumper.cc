@@ -94,9 +94,8 @@
 #include "DataFormats/VertexReco/interface/Vertex.h"
 
 #include "DataFormats/EgammaCandidates/interface/ConversionFwd.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionFinder.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionInfo.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionTools.h"
+#include "RecoEgamma/EgammaElectronAlgos/interface/ConversionFinder.h"
+#include "CommonTools/Egamma/interface/ConversionTools.h"
 
 
 #include "DataFormats/PatCandidates/interface/Electron.h"
@@ -128,6 +127,8 @@
 
 #include "CalibCalorimetry/EcalLaserCorrection/interface/EcalLaserDbService.h"
 #include "CalibCalorimetry/EcalLaserCorrection/interface/EcalLaserDbRecord.h"
+
+#include "MagneticField/Records/interface/IdealMagneticFieldRecord.h"
 
 #include "DataFormats/METReco/interface/PFMET.h"
 #include "DataFormats/METReco/interface/PFMETFwd.h"
@@ -1847,9 +1848,10 @@ void ZNtupleDumper::TreeSetSingleSCVar(const reco::SuperCluster& sc, int index)
 	_pedestalSeedSC[index] = _ped->find(seedDetId)->mean(1);
 	_noiseSeedSC[index]    = _ped->find(seedDetId)->rms(1);
 
+	/*
 	float sumLC_E = 0.;
 	float sumE = 0.;
-	/*
+	
 	std::vector< std::pair<DetId, float> > hitsAndFractions = sc.hitsAndFractions();
 	for (const auto&  detitr : hitsAndFractions) {
 		EcalRecHitCollection::const_iterator oneHit = recHits->find( (detitr.first) ) ;
@@ -2506,7 +2508,7 @@ void ZNtupleDumper::TreeSetEleIDVar(const pat::Electron& ele, int index)
 	_hOverEBC[index]                       = ele.full5x5_hcalOverEcalBc();
 
 	_pfMVA[index]   = ele.mva_e_pi();
-	_hasMatchedConversion[index] = ConversionTools::hasMatchedConversion(ele, _conversionsHandle, _bsHandle->position());
+	_hasMatchedConversion[index] = ConversionTools::hasMatchedConversion(ele, *_conversionsHandle, _bsHandle->position());
 	_maxNumberOfExpectedMissingHits[index] = ele.gsfTrack()->hitPattern().numberOfLostHits(reco::HitPattern::MISSING_INNER_HITS);
 
 	const reco::CaloClusterPtr seed_clu = ele.superCluster()->seed();
@@ -2539,7 +2541,7 @@ void ZNtupleDumper::TreeSetEleIDVar(const pat::Photon& photon, int index)
 	_hOverE[index] = photon.hadronicOverEm();
 
 	const reco::SuperCluster photonSC = *(photon.superCluster());
-	_hasMatchedConversion[index] = ConversionTools::hasMatchedConversion(photonSC, _conversionsHandle, _bsHandle->position());
+	_hasMatchedConversion[index] = ConversionTools::hasMatchedConversion(photonSC, *_conversionsHandle, _bsHandle->position());
 
 	// _eleIDloose[index]  = photon.photonID("loose");
 	// _eleIDmedium[index] = photon.photonID("medium");

@@ -67,9 +67,8 @@
 
 //#include "DataFormats/TrackReco/interface/Track.h"
 #include "DataFormats/EgammaCandidates/interface/ConversionFwd.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionFinder.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionInfo.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionTools.h"
+#include "RecoEgamma/EgammaElectronAlgos/interface/ConversionFinder.h"
+#include "CommonTools/Egamma/interface/ConversionTools.h"
 
 #include "EgammaAnalysis/ElectronTools/interface/EGammaCutBasedEleId.h"
 //#include "DataFormats/BeamSpot/interface/BeamSpot.h"
@@ -296,7 +295,7 @@ public: // interface
 		}
 
 		const reco::SuperCluster photonSC = *(photon.superCluster());
-		bool hasMatchedConversion = ConversionTools::hasMatchedConversion(photonSC, ConversionsHandle_, BeamSpotHandle_->position());
+		bool hasMatchedConversion = ConversionTools::hasMatchedConversion(photonSC, *ConversionsHandle_, BeamSpotHandle_->position());
 
 		Double_t absEtaSC = fabs(photon.superCluster()->eta());
 

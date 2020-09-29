@@ -28,13 +28,13 @@ public:
 		ValueMaps tok_valuemaps;
 	};
 
-	EleIDModifierFromBoolValueMaps(const edm::ParameterSet& conf);
+	EleIDModifierFromBoolValueMaps(const edm::ParameterSet& conf, edm::ConsumesCollector& cc);
 
 	void setEvent(const edm::Event&) override final;
 	void setEventContent(const edm::EventSetup&) override final;
-	void setConsumes(edm::ConsumesCollector&) override final;
+	void setConsumes(edm::ConsumesCollector&);
 
-	void modifyObject(pat::Electron&) const override final;
+	virtual void modifyObject(pat::Electron&) const override final;
 
 private:
 	electron_config e_conf;
@@ -48,7 +48,7 @@ DEFINE_EDM_PLUGIN(ModifyObjectValueFactory,
                   "EleIDModifierFromBoolValueMaps");
 
 EleIDModifierFromBoolValueMaps::
-EleIDModifierFromBoolValueMaps(const edm::ParameterSet& conf) :
+EleIDModifierFromBoolValueMaps(const edm::ParameterSet& conf, edm::ConsumesCollector& cc) :
 	ModifyObjectValueBase(conf)
 {
 	constexpr char electronSrc[] =  "electronSrc";
