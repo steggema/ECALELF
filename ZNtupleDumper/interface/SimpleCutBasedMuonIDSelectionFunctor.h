@@ -67,9 +67,9 @@
 
 //#include "DataFormats/TrackReco/interface/Track.h"
 #include "DataFormats/EgammaCandidates/interface/ConversionFwd.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionFinder.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionInfo.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionTools.h"
+#include "RecoEgamma/EgammaCandidates/interface/ConversionFinder.h"
+#include "RecoEgamma/EgammaCandidates/interface/ConversionInfo.h"
+#include "RecoEgamma/EgammaCandidates/interface/ConversionTools.h"
 
 #include "EgammaAnalysis/ElectronTools/interface/EGammaCutBasedEleId.h"
 //#include "DataFormats/BeamSpot/interface/BeamSpot.h"

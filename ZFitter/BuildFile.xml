@@ -1,4 +1,4 @@
-<flags SKIP_FILES="*"/>
+<!-- <flags SKIP_FILES="*"/> -->
 <use name="root"/>
 <use name="rootmath"/>
 <use name="roofit"/>

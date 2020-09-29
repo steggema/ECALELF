@@ -18,7 +18,7 @@
 
 #include "FWCore/ParameterSet/interface/ProcessDesc.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/PythonParameterSet/interface/MakeParameterSets.h"
+#include "FWCore/ParameterSetReader/interface/ParameterSetReader.h"
 
 using namespace std;
 using namespace edm;

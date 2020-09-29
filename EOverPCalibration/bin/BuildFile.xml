@@ -4,6 +4,7 @@
 <use name="Calibration/EOverPCalibration"/>
 <use name="Calibration/ZFitter"/>
 <use name="FWCore/PythonParameterSet"/>
+<use name="FWCore/ParameterSetReader"/>
 <!-- <flags CXXFLAGS="-g -Wall -fpermissive -Wno-reorder"/> -->
 <export>
 <lib name="1"/>

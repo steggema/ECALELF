@@ -64,7 +64,7 @@
 #include "DataFormats/VertexReco/interface/Vertex.h"
 
 #include "DataFormats/EgammaCandidates/interface/ConversionFwd.h"
-#include "RecoEgamma/EgammaTools/interface/ConversionFinder.h"
+#include "RecoEgamma/EgammaElectronAlgos/interface/ConversionFinder.h"
 #include "RecoEgamma/EgammaTools/interface/ConversionInfo.h"
 #include "RecoEgamma/EgammaTools/interface/ConversionTools.h"
 
