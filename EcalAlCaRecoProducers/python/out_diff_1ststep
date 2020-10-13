@@ -1,9 +1,0 @@
-6c6,7
-< double                                "fixedGridRhoFastjetAll"    ""                "RECO"         
----
-> double                                "kt6PFJetsForRhoCorrection"   "rho"             "RECO"         
-> edm::AssociationMap<edm::OneToOne<vector<Trajectory>,vector<reco::GsfTrack>,unsigned short> >    "electronGsfTracks"         ""                "RECO"         
-21a23,25
-> edm::SortedCollection<EcalRecHit,edm::StrictWeakOrdering<EcalRecHit> >    "alCaIsolatedElectrons"     "alcaPreshowerHits"   "ALCARERECO"   
-> edm::SortedCollection<EcalUncalibratedRecHit,edm::StrictWeakOrdering<EcalUncalibratedRecHit> >    "alCaIsolatedElectrons"     "alcaBarrelUncalibHits"   "ALCARERECO"   
-> edm::SortedCollection<EcalUncalibratedRecHit,edm::StrictWeakOrdering<EcalUncalibratedRecHit> >    "alCaIsolatedElectrons"     "alcaEndcapUncalibHits"   "ALCARERECO"   
