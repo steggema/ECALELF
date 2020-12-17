@@ -60,6 +60,7 @@ EleIDModifierFromBoolValueMaps(const edm::ParameterSet& conf, edm::ConsumesColle
 		for( const std::string& name : parameters ) {
 			if( std::string(electronSrc) == name ) continue;
 			if( electrons.existsAs<edm::InputTag>(name) ) {
+				std::cerr << "Importing ele ID " << name << std::endl;
 				e_conf.valuemaps[name] = electrons.getParameter<edm::InputTag>(name);
 			}
 		}
@@ -85,6 +86,8 @@ setEvent(const edm::Event& evt)
 
 	ele_idx = 0;
 
+
+std::cerr << "EleIDModifierFromBoolValueMaps::setEvent " << std::endl;
 	if( !e_conf.tok_electron_src.isUninitialized() ) {
 		edm::Handle<edm::View<pat::Electron> > eles;
 		evt.getByToken(e_conf.tok_electron_src, eles);
@@ -92,9 +95,10 @@ setEvent(const edm::Event& evt)
 		for( unsigned i = 0; i < eles->size(); ++i ) {
 			edm::Ptr<pat::Electron> ptr = eles->ptrAt(i);
 			eles_by_oop[i] = ptr;
+			std::cerr << "Setting ID for ele " << i << std::endl;
 		}
 	}
-
+std::cerr << "Getting products for tok_valuemaps of size " << e_conf.tok_valuemaps.size() << std::endl;
 	for( auto itr = e_conf.tok_valuemaps.begin(); itr != e_conf.tok_valuemaps.end(); ++itr ) {
 		get_product(evt, itr->second, ele_vmaps);
 	}
@@ -119,6 +123,7 @@ void EleIDModifierFromBoolValueMaps::setConsumes(edm::ConsumesCollector& sumes)
 	//setup electrons
 	if( !(empty_tag == e_conf.electron_src) ) e_conf.tok_electron_src = sumes.consumes<edm::View<pat::Electron> >(e_conf.electron_src);
 
+std::cerr << "Init the setConsumes " <<e_conf.valuemaps.size() << std::endl;
 	for( auto itr = e_conf.valuemaps.begin(); itr != e_conf.valuemaps.end(); ++itr ) {
 		make_consumes(itr->second, e_conf.tok_valuemaps[itr->first], sumes);
 	}
@@ -136,6 +141,7 @@ inline void assignValue(const T& ptr, const U& tok, const V& map, EleIDModifierF
 
 void EleIDModifierFromBoolValueMaps::modifyObject(pat::Electron& ele) const
 {
+	std::cerr << "EleIDModifierFromBoolValueMaps::modifyObject " << std::endl;
 	// we encounter two cases here, either we are running AOD -> MINIAOD
 	// and the value maps are to the reducedEG object, can use original object ptr
 	// or we are running MINIAOD->MINIAOD and we need to fetch the pat objects to reference
@@ -153,10 +159,15 @@ void EleIDModifierFromBoolValueMaps::modifyObject(pat::Electron& ele) const
 
 	auto eleIDs = ele.electronIDs();
 
+	std::cerr << "eleIDs size " << eleIDs.size() << std::endl;
+
+	std::cerr << "tok valuemaps size " << e_conf.tok_valuemaps.size() << std::endl;
+
 	//now we go through and modify the objects using the valuemaps we read in
 	for( auto itr = e_conf.tok_valuemaps.begin(); itr != e_conf.tok_valuemaps.end(); ++itr ) {
 		valType_t value(0.0);
 		assignValue(ptr, itr->second, ele_vmaps, value);
+		std::cerr << value<< std::endl;
 		if( !ele.isElectronIDAvailable(itr->first) ) {
 			pat::Electron::IdPair id_pair(itr->first, value);
 			eleIDs.push_back(id_pair);
@@ -166,6 +177,9 @@ void EleIDModifierFromBoolValueMaps::modifyObject(pat::Electron& ele) const
 			        << " failed because it already exists!";
 		}
 	}
+
+	std::cerr << "eleIDs size after" << eleIDs.size() << std::endl;
+
 	ele.setElectronIDs(eleIDs);
 	++ele_idx;
 }

@@ -122,8 +122,7 @@ selectedECALPhotons = cms.EDFilter("PhotonRefSelector",
 PassingVetoId = selectedECALElectrons.clone(
     cut = cms.string(
     selectedECALElectrons.cut.value() +
-    #( " && (gsfTrack.hitPattern().numberOfHits(\'MISSING_INNER_HITS\')<=2)" if(not re.match("CMSSW_9_4_.*", CMSSW_VERSION) ) else " && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=2)" ) + 
-    ( " && (gsfTrack.hitPattern().numberOfHits(\'MISSING_INNER_HITS\')<=2)" if(not re.match("CMSSW_10_.*_.*", CMSSW_VERSION) ) else " && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=2)" ) + 
+    (" && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=2)" ) + 
     " && ((isEB"
     " && ( ((pfIsolationVariables().sumChargedHadronPt + max(0.0,pfIsolationVariables().sumNeutralHadronEt + pfIsolationVariables().sumPhotonEt - 0.5 * pfIsolationVariables().sumPUPt))/p4.pt)<0.164369)"
     " && (full5x5_sigmaIetaIeta<0.011100)"
@@ -132,8 +131,7 @@ PassingVetoId = selectedECALElectrons.clone(
     " && (hadronicOverEm<0.345843)"
     ")"
     " || (isEE"  + 
-    #( " && (gsfTrack.hitPattern().numberOfHits(\'MISSING_INNER_HITS\')<=3)" if(not re.match("CMSSW_9_4_.*", CMSSW_VERSION) ) else " && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=3)" ) + 
-    ( " && (gsfTrack.hitPattern().numberOfHits(\'MISSING_INNER_HITS\')<=3)" if(not re.match("CMSSW_10_.*_.*", CMSSW_VERSION) ) else " && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=3)" ) + 
+    (" && (gsfTrack.hitPattern().numberOfLostHits(\'MISSING_INNER_HITS\')<=3)" ) + 
     " && ( ((pfIsolationVariables().sumChargedHadronPt + max(0.0,pfIsolationVariables().sumNeutralHadronEt + pfIsolationVariables().sumPhotonEt - 0.5 * pfIsolationVariables().sumPUPt))/p4.pt)<0.212604 )"
     " && (full5x5_sigmaIetaIeta<0.033987)"
     " && ( -0.245263<deltaPhiSuperClusterTrackAtVtx<0.245263 )"

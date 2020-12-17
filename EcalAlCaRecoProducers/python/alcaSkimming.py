@@ -17,19 +17,18 @@ from Calibration.EcalAlCaRecoProducers.customRereco import EcalRecal
 ### SETUP OPTIONS
 options = VarParsing.VarParsing('standard')
 options.register('isCrab',
-                 1, # default Value = true
-                 #0,
+                 0,
                  VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                  VarParsing.VarParsing.varType.int,          # string, int, or float
                  "change files path in case of local test: isCrab=0 if you are running it locally with cmsRun")
 options.register('MC',
-                 0, # default Value = falce
+                 0, # default Value = false
                  VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                  VarParsing.VarParsing.varType.int,          # string, int, or float
                  "force MC: isMC=1 if you are running on MC")
 options.register ('type',
-                  "ALCARAW",
-                  #"ALCARERECO",
+                  # "ALCARAW",
+                  "ALCARECO",
                   VarParsing.VarParsing.multiplicity.singleton,
                   VarParsing.VarParsing.varType.string,
                   "type of operations: ALCARAW, ALCARERECO, ALCARECO, ALCARECOSIM, MINIAODNTUPLE, SKIMEFFTEST")
@@ -45,7 +44,7 @@ options.register ('tagFile',
                   VarParsing.VarParsing.varType.string,
                   "path of the file with the reReco tags")
 options.register('skim',
-                 "", 
+                 "ZSkim", 
                  VarParsing.VarParsing.multiplicity.singleton,
                  VarParsing.VarParsing.varType.string,
                  "type of skim: ZSkim, WSkim, ZHLTSkim, partGun, ZmmgSkim, EleSkim (at least one electron), ''")
@@ -99,8 +98,9 @@ options.register('outputAll',
 ### setup any defaults you want
 options.output="alcaSkimALCARAW.root"
 options.secondaryOutput="ntuple.root"
-options.files= ""
-#options.files= "/store/data/Run2018A/EGamma/ALCARECO/EcalUncalZElectron-PromptReco-v1/000/315/357/00000/104293B5-5A4D-E811-97B4-FA163E6E3B50.root"
+# options.files= ""
+# options.files = "/store/data/Run2018A/EGamma/ALCARECO/EcalUncalZElectron-PromptReco-v1/000/315/357/00000/104293B5-5A4D-E811-97B4-FA163E6E3B50.root"
+options.files = '/store/data/Run2018C/EGamma/ALCARECO/EcalUncalZElectron-17Sep2018-v1/60000/2E69FF1B-5D62-CF45-9480-865E32C6CE84.root'
 #options.files= "/store/data/Run2018A/EGamma/ALCARECO/EcalUncalWElectron-PromptReco-v1/000/315/357/00000/2EFE4F2F-8B4D-E811-936D-FA163E990568.root"
 options.maxEvents = -1 # -1 means all events
 #options.maxEvents = 20 # -1 means all events
@@ -191,24 +191,27 @@ process.load('Configuration.StandardSequences.GeometryRecoDB_cff') ## please dou
 process.load('Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #FrontierConditions_GlobalTag_cff
-# import of ALCARECO sequences
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalCalIsolElectron_cff') # reduction of recHits
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalCalIsolElectron_Output_cff')
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalUncalIsolElectron_cff') # reduction of recHits ==> gives the UseDB warning
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalUncalIsolElectron_Output_cff')
-# this module provides:
-# process.seqALCARECOEcalRecalElectron 
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalRecalIsolElectron_cff')
-process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalRecalIsolElectron_Output_cff')
+process.load("RecoLocalCalo.Configuration.ecalLocalRecoSequence_cff")
+if not doTreeOnly:
+    # import of ALCARECO sequences
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalCalIsolElectron_cff') # reduction of recHits
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalCalIsolElectron_Output_cff')
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalUncalIsolElectron_cff') # reduction of recHits ==> gives the UseDB warning
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalUncalIsolElectron_Output_cff')
+    # this module provides:
+    # process.seqALCARECOEcalRecalElectron 
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalRecalIsolElectron_cff')
+    process.load('Calibration.EcalAlCaRecoProducers.ALCARECOEcalRecalIsolElectron_Output_cff')
 
-#process.load('RecoEgamma.ElectronIdentification.egmGsfElectronIDs_cff')
-from RecoLocalCalo.EcalRecProducers.ecalLocalCustom import *
-#from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
+    #process.load('RecoEgamma.ElectronIdentification.egmGsfElectronIDs_cff')
+    from RecoLocalCalo.EcalRecProducers.ecalLocalCustom import *
+    #from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
 
-process.load("Calibration.EcalAlCaRecoProducers.PUDumper_cfi")
+    process.load("Calibration.EcalAlCaRecoProducers.PUDumper_cfi")
 
 # Tree production
 process.load('Calibration.ZNtupleDumper.ntupledumper_cff')
+process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
 if(newRegression):
     process.load('EgammaAnalysis.ElectronTools.regressionApplication_cff')
@@ -239,7 +242,7 @@ if(usenewSCregressionFromSam):
     #    )
     #process.es_prefer_scRegres = cms.ESPrefer("PoolDBESSource","scRegres")
     
-    #process.load('RecoEcal.EgammaClusterProducers.particleFlowSuperClusterECAL_cfi')
+    process.load('RecoEcal.EgammaClusterProducers.particleFlowSuperClusterECAL_cfi')
     
     #process.particleFlowSuperClusterECAL.regressionConfig = cms.PSet(
     process.particleFlowSuperClusterECAL.regressionConfig = cms.PSet(
@@ -322,7 +325,6 @@ for idmod in my_id_modules:
 # added by Shervin for ES recHits (saved as in AOD): large window 15x3 (strip x row)
 process.load('RecoEcal.EgammaClusterProducers.interestingDetIdCollectionProducer_cfi')
 
-
 process.MessageLogger.cerr = cms.untracked.PSet(
     optionalPSet = cms.untracked.bool(True),
     INFO = cms.untracked.PSet(
@@ -363,13 +365,7 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(options.files),
                             secondaryFileNames = cms.untracked.vstring(options.secondaryFiles),
-                            skipEvents=cms.untracked.uint32(0),
-#                            inputCommands = cms.untracked.vstring( [ 'keep *', 
-#                                                                     'drop *_correctedHybridSuperClusters_*_RECO',
-#                                                                     'drop *_correctedMulti5x5SuperClustersWithPreshower_*_RECO',
-#                                                                     ]
-#                                                                   ),
-#                             dropDescendantsOfDroppedBranches=cms.untracked.bool(False),
+                            skipEvents=cms.untracked.uint32(0)
                             )
 
 
@@ -408,7 +404,8 @@ if(options.type=="MINIAODNTUPLE" ):
     myEleCollection= cms.InputTag("slimmedElectrons")
 recalibElectronSrc = cms.InputTag("electronRecalibSCAssociator") #now done by EcalRecal(process)
 
-process.MinEleNumberFilter.src = myEleCollection
+if not doTreeOnly:
+    process.MinEleNumberFilter.src = myEleCollection
 
 #Define the sequences
 #
@@ -432,6 +429,7 @@ if(len(options.jsonFile)>0): # this works only in local
     
 
 ################################# FILTERING EVENTS
+
 process.PUDumperSeq = cms.Sequence()
 #process.load('Calibration.EcalAlCaRecoProducers.trackerDrivenFinder_cff')
     
@@ -475,7 +473,7 @@ else:
 
 
 process.NtupleFilterSeq = cms.Sequence()
-if(ZSkim):
+if(ZSkim) and not doTreeOnly:
     process.NtupleFilterSeq = cms.Sequence(process.WZFilter)
   # process.NtupleFilterSeq= cms.Sequence(process.NtupleFilter)
     process.NtupleFilter.HLTPaths = [ 'pathALCARECOEcalCalZElectron', 'pathALCARECOEcalUncalZElectron',
@@ -520,18 +518,17 @@ else:
     print "** TrivialConditionRetriver defined"
     process.trivialCond = cms.Sequence( EcalTrivialConditionRetriever )
 
-process.alcarerecoSeq=cms.Sequence( process.trivialCond * process.seqALCARECOEcalRecalElectron) # * process.reducedEcalRecHitsES)
+if not doTreeOnly:
+    process.alcarerecoSeq=cms.Sequence( process.trivialCond * process.seqALCARECOEcalRecalElectron) # * process.reducedEcalRecHitsES)
 
+    process.rhoFastJetSeq = cms.Sequence()
+    if((not options.type=="ALCARERECO") and re.match("CMSSW_5_.*", CMSSW_VERSION)):
+        process.rhoFastJetSeq = cms.Sequence(process.kt6PFJetsForRhoCorrection) 
+        #process.rhoFastJetSeq = cms.Sequence(process.fixedGridRhoFastjetAll) 
 
-
-process.rhoFastJetSeq = cms.Sequence()
-if((not options.type=="ALCARERECO") and re.match("CMSSW_5_.*", CMSSW_VERSION)):
-    process.rhoFastJetSeq = cms.Sequence(process.kt6PFJetsForRhoCorrection) 
-    #process.rhoFastJetSeq = cms.Sequence(process.fixedGridRhoFastjetAll) 
-
-if (options.skim=="ZmmgSkim"):
-    process.patSequence=cms.Sequence( (process.muonSelectionProducers * process.phoSelectionProducers) * process.patMuons * process.patPhotons )
-    process.patSequenceMC=cms.Sequence( process.muonMatch * process.photonMatch * (process.muonSelectionProducers * process.phoSelectionProducers ) * process.patMuons * process.patPhotons )
+    if (options.skim=="ZmmgSkim"):
+        process.patSequence=cms.Sequence( (process.muonSelectionProducers * process.phoSelectionProducers) * process.patMuons * process.patPhotons )
+        process.patSequenceMC=cms.Sequence( process.muonMatch * process.photonMatch * (process.muonSelectionProducers * process.phoSelectionProducers ) * process.patMuons * process.patPhotons )
 
 #process.egmGsfElectronIDs.physicsObjectSrc = cms.InputTag("patElectrons") #myEleCollection
 
@@ -565,58 +562,60 @@ if(options.doTrackTree>0):
 ##############################
 fileName = cms.untracked.string(options.output)
 
-process.outputALCARAW = cms.OutputModule("PoolOutputModule",
-                                         # after 5 GB split the file
-                                         maxSize = cms.untracked.int32(5120000),
-                                         outputCommands = process.OutALCARECOEcalUncalElectron.outputCommands,
-                                         #fileName = fileName,
-                                         fileName = cms.untracked.string('alcaraw.root'),
-                                         SelectEvents = process.OutALCARECOEcalUncalElectron.SelectEvents,
-                                         dataset = cms.untracked.PSet(
-                                             filterName = cms.untracked.string(''),
-                                             dataTier = cms.untracked.string('ALCARECO')
-                                         )
-                                     )
-
-process.outputALCARECO = cms.OutputModule("PoolOutputModule",
-                                          # after 5 GB split the file
-                                          maxSize = cms.untracked.int32(5120000),
-                                          outputCommands = process.OutALCARECOEcalCalElectron.outputCommands,
-                                          fileName = cms.untracked.string('alcareco.root'),
-                                          SelectEvents = process.OutALCARECOEcalCalElectron.SelectEvents,
-                                          dataset = cms.untracked.PSet(
-                                              filterName = cms.untracked.string(''),
-                                              dataTier = cms.untracked.string('ALCARECO')
-                                          )
-                                      )
-
-process.zNtupleDumper.SelectEvents = process.NtupleFilter.HLTPaths
-
-process.outputALCARERECO = cms.OutputModule("PoolOutputModule",
+if not doTreeOnly:
+    process.outputALCARAW = cms.OutputModule("PoolOutputModule",
                                             # after 5 GB split the file
                                             maxSize = cms.untracked.int32(5120000),
-                                            outputCommands = process.OutALCARECOEcalCalElectron.outputCommands,
-                                            fileName = cms.untracked.string('EcalRecalElectron.root'),
-                                            SelectEvents = cms.untracked.PSet(
-                                                SelectEvents = cms.vstring('pathALCARERECOEcalCalElectron')
-                                            ),
+                                            outputCommands = process.OutALCARECOEcalUncalElectron.outputCommands,
+                                            #fileName = fileName,
+                                            fileName = cms.untracked.string('alcaraw.root'),
+                                            SelectEvents = process.OutALCARECOEcalUncalElectron.SelectEvents,
                                             dataset = cms.untracked.PSet(
                                                 filterName = cms.untracked.string(''),
                                                 dataTier = cms.untracked.string('ALCARECO')
                                             )
                                         )
 
-process.outputRECO = cms.OutputModule("PoolOutputModule",
-                                      # after 5 GB split the file
-                                      maxSize = cms.untracked.int32(5120000),
-                                      outputCommands = cms.untracked.vstring('keep *'),
-                                      fileName = cms.untracked.string('RECO.root'),
-#                                      SelectEvents = process.OutALCARECOEcalCalElectron.SelectEvents,
-                                      dataset = cms.untracked.PSet(
-                                          filterName = cms.untracked.string(''),
-                                          dataTier = cms.untracked.string('RECO')
-                                      )
-                                  )
+    process.outputALCARECO = cms.OutputModule("PoolOutputModule",
+                                            # after 5 GB split the file
+                                            maxSize = cms.untracked.int32(5120000),
+                                            outputCommands = process.OutALCARECOEcalCalElectron.outputCommands,
+                                            fileName = cms.untracked.string('alcareco.root'),
+                                            SelectEvents = process.OutALCARECOEcalCalElectron.SelectEvents,
+                                            dataset = cms.untracked.PSet(
+                                                filterName = cms.untracked.string(''),
+                                                dataTier = cms.untracked.string('ALCARECO')
+                                            )
+                                        )
+
+process.zNtupleDumper.SelectEvents = process.NtupleFilter.HLTPaths
+
+if not doTreeOnly:
+    process.outputALCARERECO = cms.OutputModule("PoolOutputModule",
+                                                # after 5 GB split the file
+                                                maxSize = cms.untracked.int32(5120000),
+                                                outputCommands = process.OutALCARECOEcalCalElectron.outputCommands,
+                                                fileName = cms.untracked.string('EcalRecalElectron.root'),
+                                                SelectEvents = cms.untracked.PSet(
+                                                    SelectEvents = cms.vstring('pathALCARERECOEcalCalElectron')
+                                                ),
+                                                dataset = cms.untracked.PSet(
+                                                    filterName = cms.untracked.string(''),
+                                                    dataTier = cms.untracked.string('ALCARECO')
+                                                )
+                                            )
+
+    process.outputRECO = cms.OutputModule("PoolOutputModule",
+                                        # after 5 GB split the file
+                                        maxSize = cms.untracked.int32(5120000),
+                                        outputCommands = cms.untracked.vstring('keep *'),
+                                        fileName = cms.untracked.string('RECO.root'),
+    #                                      SelectEvents = process.OutALCARECOEcalCalElectron.SelectEvents,
+                                        dataset = cms.untracked.PSet(
+                                            filterName = cms.untracked.string(''),
+                                            dataTier = cms.untracked.string('RECO')
+                                        )
+                                    )
 
 #print "OUTPUTCOMMANDS"
 #print process.outputALCARECO.outputCommands
@@ -637,55 +636,56 @@ process.outputRECO = cms.OutputModule("PoolOutputModule",
 
 
 # ALCARAW
-process.pathALCARECOEcalUncalSingleElectron = cms.Path(process.PUDumperSeq * process.filterSeq *
-                                                       process.seqALCARECOEcalUncalElectron 
-                                                       )
-process.pathALCARECOEcalUncalZElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
-                                                   process.seqALCARECOEcalUncalZElectron )
-process.pathALCARECOEcalUncalZSCElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
-                                                     ~process.ZeeFilter * process.ZSCFilter *
-                                                         process.seqALCARECOEcalUncalZSCElectron 
-                                                     )
-process.pathALCARECOEcalUncalWElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
-                                                   ~process.ZeeFilter * ~process.ZSCFilter * process.WenuFilter *
-                                                   process.seqALCARECOEcalUncalWElectron 
-                                                   )
-process.pathALCARECOEcalUncalZmmgPhoton = cms.Path( process.PUDumperSeq *
-                                                    process.filterSeq * process.FilterMuSeq * process.ZmmgSkimSeq * 
+if not doTreeOnly:
+    process.pathALCARECOEcalUncalSingleElectron = cms.Path(process.PUDumperSeq * process.filterSeq *
+                                                        process.seqALCARECOEcalUncalElectron 
+                                                        )
+    process.pathALCARECOEcalUncalZElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
+                                                    process.seqALCARECOEcalUncalZElectron )
+    process.pathALCARECOEcalUncalZSCElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
+                                                        ~process.ZeeFilter * process.ZSCFilter *
+                                                            process.seqALCARECOEcalUncalZSCElectron 
+                                                        )
+    process.pathALCARECOEcalUncalWElectron = cms.Path( process.PUDumperSeq * process.filterSeq * process.preFilterSeq *
+                                                    ~process.ZeeFilter * ~process.ZSCFilter * process.WenuFilter *
+                                                    process.seqALCARECOEcalUncalWElectron 
+                                                    )
+    process.pathALCARECOEcalUncalZmmgPhoton = cms.Path( process.PUDumperSeq *
+                                                        process.filterSeq * process.FilterMuSeq * process.ZmmgSkimSeq * 
+                                                        ~process.ZeeFilter * ~process.ZSCFilter * ~process.WenuFilter *
+                                                        process.seqALCARECOEcalUncalElectron ) #* process.hltReporter)
+
+
+    # ALCARERECO
+    process.pathALCARERECOEcalCalElectron = cms.Path(process.alcarerecoSeq)
+
+    if(doAnyTree):
+        process.pathALCARERECOEcalCalElectron+=cms.Sequence(  process.ntupleSeq) # this cannot be done because the json will prevent to save the alcareco files
+
+    # ALCARECO
+    process.pathALCARECOEcalCalSingleElectron = cms.Path(process.PUDumperSeq * process.filterSeq *
+                                                        process.pfIsoEgamma *
+                                                        process.ALCARECOEcalCalElectronSeq)
+    process.pathALCARECOEcalCalZElectron = cms.Path( process.PUDumperSeq * process.filterSeq * 
+                                                    process.ZeeSkimFilterSeq *                                                 
+                                                    process.pfIsoEgamma *
+                                                    process.ALCARECOEcalCalElectronSeq)
+    process.pathALCARECOEcalCalWElectron = cms.Path( process.PUDumperSeq * process.filterSeq *
+                                                    process.WenuSkimFilterSeq *
+                                                    process.pfIsoEgamma *
+                                                    process.ALCARECOEcalCalElectronSeq)
+    process.pathALCARECOEcalCalZSCElectron = cms.Path( process.PUDumperSeq *
+                                                    process.filterSeq *
+                                                    process.ZSCSkimFilterSeq *
+    #                                                   process.ZSCHltFilter *
+                                                    process.pfIsoEgamma *
+                                                    process.ALCARECOEcalCalElectronSeq ) #* process.hltReporter)
+    process.pathALCARECOEcalCalZmmgPhoton = cms.Path( process.PUDumperSeq *
+                                                    process.filterSeq * process.FilterMuSeq *  
+                                                    process.ZmmgSkimSeq *
                                                     ~process.ZeeFilter * ~process.ZSCFilter * ~process.WenuFilter *
-                                                    process.seqALCARECOEcalUncalElectron ) #* process.hltReporter)
-
-
-# ALCARERECO
-process.pathALCARERECOEcalCalElectron = cms.Path(process.alcarerecoSeq)
-
-if(doAnyTree):
-    process.pathALCARERECOEcalCalElectron+=cms.Sequence(  process.ntupleSeq) # this cannot be done because the json will prevent to save the alcareco files
-
-# ALCARECO
-process.pathALCARECOEcalCalSingleElectron = cms.Path(process.PUDumperSeq * process.filterSeq *
-                                                     process.pfIsoEgamma *
-                                                     process.ALCARECOEcalCalElectronSeq)
-process.pathALCARECOEcalCalZElectron = cms.Path( process.PUDumperSeq * process.filterSeq * 
-                                                 process.ZeeSkimFilterSeq *                                                 
-                                                 process.pfIsoEgamma *
-                                                 process.ALCARECOEcalCalElectronSeq)
-process.pathALCARECOEcalCalWElectron = cms.Path( process.PUDumperSeq * process.filterSeq *
-                                                 process.WenuSkimFilterSeq *
-                                                 process.pfIsoEgamma *
-                                                 process.ALCARECOEcalCalElectronSeq)
-process.pathALCARECOEcalCalZSCElectron = cms.Path( process.PUDumperSeq *
-                                                   process.filterSeq *
-                                                   process.ZSCSkimFilterSeq *
-#                                                   process.ZSCHltFilter *
-                                                   process.pfIsoEgamma *
-                                                   process.ALCARECOEcalCalElectronSeq ) #* process.hltReporter)
-process.pathALCARECOEcalCalZmmgPhoton = cms.Path( process.PUDumperSeq *
-                                                   process.filterSeq * process.FilterMuSeq *  
-                                                  process.ZmmgSkimSeq *
-                                                   ~process.ZeeFilter * ~process.ZSCFilter * ~process.WenuFilter *
-                                                   process.pfIsoEgamma *
-                                                   process.seqALCARECOEcalCalPhoton ) #* process.hltReporter)
+                                                    process.pfIsoEgamma *
+                                                    process.seqALCARECOEcalCalPhoton ) #* process.hltReporter)
 
 if (options.skim=="ZmmgSkim"):
     process.NtuplePath = cms.Path(process.filterSeq * process.FilterMuSeq *  process.NtupleFilterSeq 
@@ -694,7 +694,7 @@ if (options.skim=="ZmmgSkim"):
                                * process.ntupleSeq)
 else:
     process.NtuplePath = cms.Path(process.filterSeq * process.preFilterSeq *  process.NtupleFilterSeq 
-                                  # * process.ecalMultiFitUncalibRecHit
+                            #    * process.ecalMultiFitUncalibRecHit
                                * process.ntupleSeq)
 process.NtupleEndPath = cms.EndPath( process.zNtupleDumper)
 if options.outputAll:
@@ -715,35 +715,36 @@ if(not doTreeOnly):
 ############################################################
 # Schedule definition
 ##############################
-if(options.skim=='WSkim'):
-    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalUncalWElectron')
-        )
-    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalCalWElectron')
-        )
-elif(options.skim=='ZSkim'):
-    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalUncalZElectron', 'pathALCARECOEcalUncalZSCElectron')
-        )
-    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalCalZElectron', 'pathALCARECOEcalCalZSCElectron')
-        )
-elif(options.skim=='ZmmgSkim'):
-    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalUncalZmmgPhoton')
-        )
-    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalCalZmmgPhoton')
-        )
-else:
-    #if(options.skim=="" or options.skim=="none" or options.skim=="no" or options.skim=="partGun"):
-    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalUncalSingleElectron')
-        )
-    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-        SelectEvents = cms.vstring('pathALCARECOEcalCalSingleElectron')
-        )
+if not doTreeOnly:
+    if(options.skim=='WSkim'):
+        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalUncalWElectron')
+            )
+        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalCalWElectron')
+            )
+    elif(options.skim=='ZSkim'):
+        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalUncalZElectron', 'pathALCARECOEcalUncalZSCElectron')
+            )
+        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalCalZElectron', 'pathALCARECOEcalCalZSCElectron')
+            )
+    elif(options.skim=='ZmmgSkim'):
+        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalUncalZmmgPhoton')
+            )
+        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalCalZmmgPhoton')
+            )
+    else:
+        #if(options.skim=="" or options.skim=="none" or options.skim=="no" or options.skim=="partGun"):
+        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalUncalSingleElectron')
+            )
+        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('pathALCARECOEcalCalSingleElectron')
+            )
 
 if(options.type=='ALCARAW'):
     process.schedule = cms.Schedule(
@@ -762,7 +763,7 @@ if(options.type=='ALCARAW'):
 
 elif(options.type=='ALCARERECO'):
     if(doTreeOnly):
-        process.NtuplePath = cms.Path( process.ntupleSeq * process.zNtupleDumper)
+        process.NtuplePath = cms.Path(process.ntupleSeq * process.zNtupleDumper)
         process.schedule = cms.Schedule(process.NtuplePath) #, process.NtupleEndPath)
     else:
         if(doAnyTree):
@@ -770,9 +771,11 @@ elif(options.type=='ALCARERECO'):
         process.schedule = cms.Schedule(process.pathALCARERECOEcalCalElectron, process.ALCARERECOoutput_step)
 elif(options.type=='ALCARECO' or options.type=='ALCARECOSIM'):
     if(doTreeOnly):
-        process.NtuplePath = cms.Path(process.ntupleSeq)
+        process.NtuplePath = cms.Path(process.bunchSpacingProducer*process.ecalLocalRecoSequence*process.ntupleSeq)
         process.schedule = cms.Schedule(process.NtuplePath, process.NtupleEndPath)
         process.zNtupleDumper.WZSkimResultsCollection = cms.InputTag('TriggerResults::ALCARECO')
+        process.patElectrons.reducedBarrelRecHitCollection = cms.InputTag("ecalRecHit","EcalRecHitsEB")
+        process.patElectrons.reducedEndcapRecHitCollection = cms.InputTag("ecalRecHit","EcalRecHitsEE")
     else:
         if(doAnyTree==False):
             process.schedule = cms.Schedule(process.pathALCARECOEcalCalZElectron,  process.pathALCARECOEcalCalWElectron,
@@ -831,14 +834,13 @@ process.patElectrons.userData = cms.PSet(
 
 
 
-
-
 #process.patElectrons.electronSource = myEleCollection
 process.electronMatch.src = myEleCollection
 if (options.skim=="ZmmgSkim"):
     process.alCaIsolatedElectrons.photonLabel = cms.InputTag("gedPhotons")
 
-process.alcaElectronTracksReducer.electronLabel = myEleCollection
+if not doTreeOnly:
+    process.alcaElectronTracksReducer.electronLabel = myEleCollection
 
 #process.eleNewEnergiesProducer.recHitCollectionEB = cms.InputTag("alCaIsolatedElectrons", "alCaRecHitsEB")
 #process.eleNewEnergiesProducer.recHitCollectionEE = cms.InputTag("alCaIsolatedElectrons", "alCaRecHitsEE")
@@ -979,8 +981,8 @@ if(options.type=="ALCARERECO"):
     process.slimmedECALELFElectrons.reducedBarrelRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEB
     process.slimmedECALELFElectrons.reducedEndcapRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEE
 
-process.patElectrons.reducedBarrelRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEB
-process.patElectrons.reducedEndcapRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEE
+    process.patElectrons.reducedBarrelRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEB
+    process.patElectrons.reducedEndcapRecHitCollection = process.eleNewEnergiesProducer.recHitCollectionEE
 
 for modifier in process.slimmedECALELFElectrons.modifierConfig.modifications:
     modifier.ecalRecHitsEB = process.slimmedECALELFElectrons.reducedBarrelRecHitCollection
