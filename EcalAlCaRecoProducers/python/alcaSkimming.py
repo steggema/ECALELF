@@ -523,8 +523,8 @@ if not doTreeOnly:
 
     process.rhoFastJetSeq = cms.Sequence()
     if((not options.type=="ALCARERECO") and re.match("CMSSW_5_.*", CMSSW_VERSION)):
-        process.rhoFastJetSeq = cms.Sequence(process.kt6PFJetsForRhoCorrection) 
-        #process.rhoFastJetSeq = cms.Sequence(process.fixedGridRhoFastjetAll) 
+        # process.rhoFastJetSeq = cms.Sequence(process.kt6PFJetsForRhoCorrection) 
+        process.rhoFastJetSeq = cms.Sequence(process.fixedGridRhoFastjetAll) 
 
     if (options.skim=="ZmmgSkim"):
         process.patSequence=cms.Sequence( (process.muonSelectionProducers * process.phoSelectionProducers) * process.patMuons * process.patPhotons )
@@ -859,8 +859,8 @@ if(options.type!="MINIAODNTUPLE"):
                cutflow.cutName == cms.string('GsfEleCalPFClusterIsoCut') or
                cutflow.cutName == cms.string('GsfEleEffAreaPFIsoCut')
                ):
-                cutflow.rho = cms.InputTag("kt6PFJetsForRhoCorrection:rho")
-                #cutflow.rho = cms.InputTag("fixedGridRhoFastjetAll:rho")
+                # cutflow.rho = cms.InputTag("kt6PFJetsForRhoCorrection:rho")
+                cutflow.rho = cms.InputTag("fixedGridRhoFastjetAll:rho")
 #    process.electronRegressionValueMapProducer.ebReducedRecHitCollection = rechitsEB
 #    process.electronRegressionValueMapProducer.eeReducedRecHitCollection = rechitsEE
 #    process.electronRegressionValueMapProducer.esReducedRecHitCollection = rechitsES
@@ -908,8 +908,8 @@ else:
 #    process.zNtupleDumper.uncalibRecHitCollectionEB = process.ecalRecHit.EBuncalibRecHitCollection
 #    process.zNtupleDumper.uncalibRecHitCollectionEE = process.ecalRecHit.EEuncalibRecHitCollection
 
-    process.zNtupleDumper.rhoFastJet = cms.InputTag("kt6PFJetsForRhoCorrection")
-    #process.zNtupleDumper.rhoFastJet = cms.InputTag("fixedGridRhoFastjetAll")
+    # process.zNtupleDumper.rhoFastJet = cms.InputTag("kt6PFJetsForRhoCorrection")
+    process.zNtupleDumper.rhoFastJet = cms.InputTag("fixedGridRhoFastjetAll")
     process.zNtupleDumper.pileupInfo = cms.InputTag("slimmedAddPileupInfo")
     process.zNtupleDumper.vertexCollection = cms.InputTag('offlineSlimmedPrimaryVertices')
     process.zNtupleDumper.conversionCollection = cms.InputTag('reducedEgamma','reducedConversions') #cms.InputTag('allConversions'),
@@ -939,8 +939,8 @@ if(options.type=="ALCARERECO"):
                cutflow.cutName == cms.string('GsfEleCalPFClusterIsoCut') or
                cutflow.cutName == cms.string('GsfEleEffAreaPFIsoCut')
                ):
-                cutflow.rho = cms.InputTag("kt6PFJetsForRhoCorrection:rho")
-                #cutflow.rho = cms.InputTag("fixedGridRhoFastjetAll")
+                # cutflow.rho = cms.InputTag("kt6PFJetsForRhoCorrection:rho")
+                cutflow.rho = cms.InputTag("fixedGridRhoFastjetAll")
                 
 
     if(options.bunchSpacing==25):
