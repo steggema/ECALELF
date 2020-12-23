@@ -1,12 +1,24 @@
-
 import os, sys, imp, re
 import copy
 
 import FWCore.ParameterSet.Config as cms
-from Calibration.EcalAlCaRecoProducers.customRereco import EcalRecal 
 
 from RecoLocalCalo.Configuartion.ecalLocalRecoSequence_cff import ecalLocalRecoSequence
+from Calibration.EcalAlcaRecoProducer.WZElectronSkims_cff import WZFilter
 
+
+def EcalRecal(alCaIsolatedElectrons, selectedECALElectrons, PassingVetoId):
+    recalibElectronSrc = cms.InputTag("electronRecalibSCAssociator")
+    alCaIsolatedElectrons.srcLabels = cms.VInputTag( "electronRecalibSCAssociator")
+    alCaIsolatedElectrons.electronLabel = "electronRecalibSCAssociator"
+    alCaIsolatedElectrons.ebRecHitsLabel = cms.InputTag("ecalRecHit","EcalRecHitsEB")
+    alCaIsolatedElectrons.eeRecHitsLabel = cms.InputTag("ecalRecHit","EcalRecHitsEE")
+    alCaIsolatedElectrons.EESuperClusterCollection = process.reducedEcalRecHitsES.EndcapSuperClusterCollection
+
+    selectedECALElectrons.src = cms.InputTag("electronRecalibSCAssociator")
+    PassingVetoId.src = recalibElectronSrc
+
+    return process
 
 
 
@@ -37,6 +49,8 @@ from RecoLocalCalo.Configuartion.ecalLocalRecoSequence_cff import ecalLocalRecoS
 
 from Calibration.ZNtupleDumper.elenewenergiesproduer_cfi import eleNewEnergiesProducer
 from RecoEcal.EgammaClusterProducer.particleFlowSuperClusterEcal_cfi import particleFlowSuperClusterECAL
+
+from HLTrigger.HLTfilters.hltHighLevel_cfi import hltHighLevel
 
 if usenewSCregressionFromSam:
     eleNewEnergiesProducer = eleNewEnergiesProducer.clone()
@@ -87,64 +101,42 @@ recalibElectronSrc = cms.InputTag("electronRecalibSCAssociator")
 MinEleNumberFilter.src = myEleCollection
 
 
-pfIsoEgamma = cms.Sequence()
 
-process.load('Calibration.EcalAlCaRecoProducers.WZElectronSkims_cff')
-
-process.load('DPGAnalysis.Skims.ZmmgSkim_cff')
-
-process.MinMuonNumberFilter = cms.EDFilter("CandViewCountFilter",
+MinMuonNumberFilter = cms.EDFilter("CandViewCountFilter",
                                           src = cms.InputTag("muons"),
                                           minNumber = cms.uint32(2))
-process.MinPhoNumberFilter = cms.EDFilter("CandViewCountFilter",
+MinPhoNumberFilter = cms.EDFilter("CandViewCountFilter",
                                           src = cms.InputTag("gedPhotons"),
                                           minNumber = cms.uint32(1))
-process.filterSeq = cms.Sequence()
-if (ZmmgSkim==True):
-    process.filterSeq = cms.Sequence(process.MinMuonNumberFilter * process.MinPhoNumberFilter)
+filterSeq = cms.Sequence()
 
-if (HLTFilter):
-    from HLTrigger.HLTfilters.hltHighLevel_cfi import *
-    process.ZEEHltFilter = copy.deepcopy(hltHighLevel)
-    process.ZEEHltFilter.throw = cms.bool(False)
-    process.ZEEHltFilter.HLTPaths = [ "HLT_Ele17_CaloIdT_CaloIsoVL_TrkIdVL_TrkIsoVL_Ele8_CaloIdT_CaloIsoVL_TrkIdVL_TrkIsoVL_*"]
-    process.filterSeq *= process.ZEEHltFilter
-
-from HLTrigger.HLTfilters.hltHighLevel_cfi import *
-process.NtupleFilter = copy.deepcopy(hltHighLevel)
-process.NtupleFilter.throw = cms.bool(False)
-process.NtupleFilter.HLTPaths = [ 'pathALCARECOEcalUncalZElectron',   'pathALCARECOEcalUncalWElectron',
+NtupleFilterGeneral = copy.deepcopy(hltHighLevel)
+NtupleFilterGeneral.throw = cms.bool(False)
+NtupleFilterGeneral.HLTPaths = [ 'pathALCARECOEcalUncalZElectron',   'pathALCARECOEcalUncalWElectron',
                                   'pathALCARECOEcalCalZElectron',     'pathALCARECOEcalCalWElectron',
                                   'pathALCARECOEcalUncalZSCElectron', 'pathALCARECOEcalCalZSCElectron',
                                   'pathALCARECOEcalUncalSingleElectron', 'pathALCARECOEcalCalSingleElectron', ## in case of no skim
                                  ]
 
+NtupleFilterGeneral.TriggerResultsTag = cms.InputTag("TriggerResults","","RECO")
 
-process.NtupleFilter.TriggerResultsTag = cms.InputTag("TriggerResults","","RECO")
+# ZSkim
+NtupleFilterSeqZSkim = cms.Sequence(process.WZFilter)
+NtupleFilterZSkim = copy.deepcopy(hltHighLevel)
+NtupleFilterZSkim.HLTPaths = [ 'pathALCARECOEcalCalZElectron', 'pathALCARECOEcalUncalZElectron',
+                                    'pathALCARECOEcalCalZSCElectron', 'pathALCARECOEcalUncalZSCElectron',
+                                    ]
 
+# WSkim
+NtupleFilterSeqWSkim = cms.Sequence(process.WZFilter)
+NtupleFilterWSkim = copy.deepcopy(hltHighLevel)
+NtupleFilterWSkim.HLTPaths = [ 'pathALCARECOEcalCalWElectron', 'pathALCARECOEcalUncalWElectron' ]
 
-process.NtupleFilterSeq = cms.Sequence()
-if(ZSkim) and not doTreeOnly:
-    process.NtupleFilterSeq = cms.Sequence(process.WZFilter)
-  # process.NtupleFilterSeq= cms.Sequence(process.NtupleFilter)
-    process.NtupleFilter.HLTPaths = [ 'pathALCARECOEcalCalZElectron', 'pathALCARECOEcalUncalZElectron',
-                                      'pathALCARECOEcalCalZSCElectron', 'pathALCARECOEcalUncalZSCElectron',
-                                      ]
-elif(WSkim):
-    process.NtupleFilterSeq = cms.Sequence(process.WZFilter)
-    #    process.NtupleFilterSeq= cms.Sequence(process.NtupleFilter)
-    process.NtupleFilter.HLTPaths = [ 'pathALCARECOEcalCalWElectron', 'pathALCARECOEcalUncalWElectron' ]
-elif(ZmmgSkim):
-    process.NtupleFilterSeq = cms.Sequence(process.ZmmgSkimSeq)
-    process.NtupleFilter.HLTPaths = [ 'pathALCARECOEcalCalZmmgPhoton', 'pathALCARECOEcalUncalZmmgPhoton' ]
+# NoSkim
+NtupleFilterSeqNoSkim = cms.Sequence()
+NtupleFilterNoSkim = copy.deepcopy(hltHighLevel)
+NtupleFilterNoSkim.HLTPaths = []
 
-elif(options.skim=="no" or options.skim=="NO" or options.skim=="none" or options.skim=="NONE"):
-    process.NtupleFilterSeq = cms.Sequence()
-    process.NtupleFilter.HLTPaths = []
-
-
-if(options.skim=="partGun"):
-    process.zNtupleDumper.isPartGun = cms.bool(True)
 
 ###############################
 # ECAL Recalibration
@@ -159,38 +151,15 @@ process.load("RecoEcal.EgammaClusterProducers.reducedRecHitsSequence_cff")
 
 #==============================
 
-        
-try:
-    EcalTrivialConditionRetriever
-except NameError:
-    #print "well, it WASN'T defined after all!"
-    process.trivialCond = cms.Sequence()
-else:
-    print "** TrivialConditionRetriver defined"
-    process.trivialCond = cms.Sequence( EcalTrivialConditionRetriever )
+# FIXME - understand why EcalTrivialConditionRetriever was in the file before (but apparently doing nothing)
 
-if not doTreeOnly:
-    process.alcarerecoSeq=cms.Sequence( process.trivialCond * process.seqALCARECOEcalRecalElectron) # * process.reducedEcalRecHitsES)
+alcarerecoSeq = cms.Sequence( process.seqALCARECOEcalRecalElectron) # * process.reducedEcalRecHitsES)
 
-    process.rhoFastJetSeq = cms.Sequence()
-
-    if (options.skim=="ZmmgSkim"):
-        process.patSequence=cms.Sequence( (process.muonSelectionProducers * process.phoSelectionProducers) * process.patMuons * process.patPhotons )
-        process.patSequenceMC=cms.Sequence( process.muonMatch * process.photonMatch * (process.muonSelectionProducers * process.phoSelectionProducers ) * process.patMuons * process.patPhotons )
 
 #process.egmGsfElectronIDs.physicsObjectSrc = cms.InputTag("patElectrons") #myEleCollection
 
-if(options.type!="MINIAODNTUPLE"):
-    if(MC):
-        process.prePatSequence *= process.electronMatch
-        process.alCaIsolatedElectrons.uncalibRecHitCollectionEB = cms.InputTag("")
-        process.alCaIsolatedElectrons.uncalibRecHitCollectionEE = cms.InputTag("")
-        process.alCaIsolatedElectrons.esRecHitsLabel = cms.InputTag("reducedEcalRecHitsES")
+ntupleSeq = cms.Sequence(process.jsonFilter * process.patSequence)
 
-    process.ntupleSeq = cms.Sequence(process.jsonFilter * process.patSequence)
-else:
-    #process.load('PhysicsTools.PatAlgos.slimming.MiniAODfromMiniAOD_cff')
-    process.ntupleSeq = cms.Sequence(process.jsonFilter  * process.patSequence)
 
     
 if(options.doTree==0):
@@ -210,6 +179,8 @@ if(options.doTrackTree>0):
 ##############################
 fileName = cms.untracked.string(options.output)
 
+
+process.zNtupleDumper.SelectEvents = NtupleFilter.HLTPaths
 if not doTreeOnly:
     process.outputALCARAW = cms.OutputModule("PoolOutputModule",
                                             # after 5 GB split the file
@@ -235,9 +206,6 @@ if not doTreeOnly:
                                                 dataTier = cms.untracked.string('ALCARECO')
                                             )
                                         )
-
-process.zNtupleDumper.SelectEvents = process.NtupleFilter.HLTPaths
-
 if not doTreeOnly:
     process.outputALCARERECO = cms.OutputModule("PoolOutputModule",
                                                 # after 5 GB split the file
@@ -265,65 +233,27 @@ if not doTreeOnly:
                                         )
                                     )
 
-# ALCARAW
-if not doTreeOnly:
-    process.pathALCARECOEcalUncalSingleElectron = cms.Path(process.filterSeq *
-                                                        process.seqALCARECOEcalUncalElectron 
-                                                        )
-    process.pathALCARECOEcalUncalZElectron = cms.Path(process.filterSeq * process.preFilterSeq *
-                                                    process.seqALCARECOEcalUncalZElectron )
-    process.pathALCARECOEcalUncalZSCElectron = cms.Path(process.filterSeq * process.preFilterSeq *
-                                                        ~process.ZeeFilter * process.ZSCFilter *
-                                                            process.seqALCARECOEcalUncalZSCElectron 
-                                                        )
-    process.pathALCARECOEcalUncalWElectron = cms.Path(process.filterSeq * process.preFilterSeq *
-                                                    ~process.ZeeFilter * ~process.ZSCFilter * process.WenuFilter *
-                                                    process.seqALCARECOEcalUncalWElectron 
-                                                    )
-    process.pathALCARECOEcalUncalZmmgPhoton = cms.Path(                                                        process.filterSeq * process.FilterMuSeq * process.ZmmgSkimSeq * 
-                                                        ~process.ZeeFilter * ~process.ZSCFilter * ~process.WenuFilter *
-                                                        process.seqALCARECOEcalUncalElectron ) #* process.hltReporter)
 
-
-    # ALCARERECO
-    process.pathALCARERECOEcalCalElectron = cms.Path(process.alcarerecoSeq)
-
-    if(doAnyTree):
-        process.pathALCARERECOEcalCalElectron+=cms.Sequence(  process.ntupleSeq) # this cannot be done because the json will prevent to save the alcareco files
+# ALCARERECO
+pathALCARERECOEcalCalElectron = cms.Path(alcarerecoSeq * ntupleSeq)
 
     # ALCARECO
-    process.pathALCARECOEcalCalSingleElectron = cms.Path(process.filterSeq *
-                                                        process.pfIsoEgamma *
+    process.pathALCARECOEcalCalSingleElectron = cms.Path(filterSeq *
                                                         process.ALCARECOEcalCalElectronSeq)
-    process.pathALCARECOEcalCalZElectron = cms.Path(process.filterSeq * 
+    process.pathALCARECOEcalCalZElectron = cms.Path(filterSeq * 
                                                     process.ZeeSkimFilterSeq *                                                 
-                                                    process.pfIsoEgamma *
                                                     process.ALCARECOEcalCalElectronSeq)
-    process.pathALCARECOEcalCalWElectron = cms.Path(process.filterSeq *
+    process.pathALCARECOEcalCalWElectron = cms.Path(filterSeq *
                                                     process.WenuSkimFilterSeq *
-                                                    process.pfIsoEgamma *
                                                     process.ALCARECOEcalCalElectronSeq)
-    process.pathALCARECOEcalCalZSCElectron = cms.Path(process.filterSeq *
+    process.pathALCARECOEcalCalZSCElectron = cms.Path(filterSeq *
                                                     process.ZSCSkimFilterSeq *
-    #                                                   process.ZSCHltFilter *
-                                                    process.pfIsoEgamma *
                                                     process.ALCARECOEcalCalElectronSeq ) #* process.hltReporter)
-    process.pathALCARECOEcalCalZmmgPhoton = cms.Path(process.filterSeq * process.FilterMuSeq *  
-                                                    process.ZmmgSkimSeq *
-                                                    ~process.ZeeFilter * ~process.ZSCFilter * ~process.WenuFilter *
-                                                    process.pfIsoEgamma *
-                                                    process.seqALCARECOEcalCalPhoton ) #* process.hltReporter)
 
-if (options.skim=="ZmmgSkim"):
-    process.NtuplePath = cms.Path(process.filterSeq * process.FilterMuSeq *  process.NtupleFilterSeq 
-                                  #                              * process.pfIsoEgamma 
-                                  #                              * process.ALCARECOEcalCalElectronSeq 
-                               * process.ntupleSeq)
-else:
-    process.NtuplePath = cms.Path(process.filterSeq * process.preFilterSeq *  process.NtupleFilterSeq 
-                            #    * process.ecalMultiFitUncalibRecHit
-                               * process.ntupleSeq)
-process.NtupleEndPath = cms.EndPath( process.zNtupleDumper)
+process.NtuplePath = cms.Path(filterSeq * process.preFilterSeq * NtupleFilterSeq * ntupleSeq)
+
+
+NtupleEndPath = cms.EndPath( process.zNtupleDumper)
 if options.outputAll:
 	outputAllFilename = "outputAll.root"
 	process.output = cms.OutputModule("PoolOutputModule", fileName = cms.untracked.string(outputAllFilename))
@@ -339,66 +269,55 @@ if(not doTreeOnly):
         process.ALCARAWoutput_step = cms.EndPath(process.outputALCARAW)
             
 
-############################################################
-# Schedule definition
-##############################
-if not doTreeOnly:
-    if(options.skim=='WSkim'):
-        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalUncalWElectron')
-            )
-        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalCalWElectron')
-            )
-    elif(options.skim=='ZSkim'):
-        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalUncalZElectron', 'pathALCARECOEcalUncalZSCElectron')
-            )
-        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalCalZElectron', 'pathALCARECOEcalCalZSCElectron')
-            )
-    elif(options.skim=='ZmmgSkim'):
-        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalUncalZmmgPhoton')
-            )
-        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalCalZmmgPhoton')
-            )
-    else:
-        #if(options.skim=="" or options.skim=="none" or options.skim=="no" or options.skim=="partGun"):
-        process.outputALCARAW.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalUncalSingleElectron')
-            )
-        process.outputALCARECO.SelectEvents = cms.untracked.PSet(
-            SelectEvents = cms.vstring('pathALCARECOEcalCalSingleElectron')
-            )
+if options.skim=='WSkim':
+    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalUncalWElectron')
+        )
+    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalCalWElectron')
+        )
+elif(options.skim=='ZSkim'):
+    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalUncalZElectron', 'pathALCARECOEcalUncalZSCElectron')
+        )
+    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalCalZElectron', 'pathALCARECOEcalCalZSCElectron')
+        )
+else:
+    process.outputALCARAW.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalUncalSingleElectron')
+        )
+    process.outputALCARECO.SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('pathALCARECOEcalCalSingleElectron')
+        )
 
 if(options.type=='ALCARAW'):
     process.schedule = cms.Schedule(
         #process.raw2digi_step,process.L1Reco_step,
         #process.reconstruction_step,process.endjob_step, 
-        process.pathALCARECOEcalUncalZElectron, process.pathALCARECOEcalUncalWElectron,
+        process.pathALCARECOEcalUncalZElectron, 
+        process.pathALCARECOEcalUncalWElectron,
         process.pathALCARECOEcalUncalZSCElectron,
-        process.pathALCARECOEcalUncalZmmgPhoton,
         process.ALCARAWoutput_step,
-        process.pathALCARECOEcalCalZElectron,  process.pathALCARECOEcalCalWElectron,
+        process.pathALCARECOEcalCalZElectron, 
+        process.pathALCARECOEcalCalWElectron,
         process.pathALCARECOEcalCalZSCElectron,
-        process.pathALCARECOEcalCalZmmgPhoton,
-        process.ALCARECOoutput_step, process.NtuplePath
+        process.ALCARECOoutput_step, 
+        process.NtuplePath
     ) # fix the output modules
     
 
 elif(options.type=='ALCARERECO'):
     if(doTreeOnly):
-        process.NtuplePath = cms.Path(process.ntupleSeq * process.zNtupleDumper)
+        process.NtuplePath = cms.Path(ntupleSeq * process.zNtupleDumper)
         process.schedule = cms.Schedule(process.NtuplePath) #, process.NtupleEndPath)
     else:
         if(doAnyTree):
             process.pathALCARERECOEcalCalElectron += process.zNtupleDumper
         process.schedule = cms.Schedule(process.pathALCARERECOEcalCalElectron, process.ALCARERECOoutput_step)
-elif(options.type=='ALCARECO' or options.type=='ALCARECOSIM'):
-    if(doTreeOnly):
-        process.NtuplePath = cms.Path(process.bunchSpacingProducer*process.ecalLocalRecoSequence*process.ntupleSeq)
+elif options.type=='ALCARECO':
+    if doTreeOnly:
+        process.NtuplePath = cms.Path(process.bunchSpacingProducer*process.ecalLocalRecoSequence*ntupleSeq)
         process.schedule = cms.Schedule(process.NtuplePath, process.NtupleEndPath)
         process.zNtupleDumper.WZSkimResultsCollection = cms.InputTag('TriggerResults::ALCARECO')
         process.patElectrons.reducedBarrelRecHitCollection = cms.InputTag("ecalRecHit","EcalRecHitsEB")
@@ -406,16 +325,16 @@ elif(options.type=='ALCARECO' or options.type=='ALCARECOSIM'):
     else:
         if(doAnyTree==False):
             process.schedule = cms.Schedule(process.pathALCARECOEcalCalZElectron,  process.pathALCARECOEcalCalWElectron,
-                                            process.pathALCARECOEcalCalZSCElectron, #process.pathALCARECOEcalCalZmmgPhoton,
+                                            process.pathALCARECOEcalCalZSCElectron, 
                                             process.ALCARECOoutput_step
                                             ) # fix the output modules
         else:
             process.schedule = cms.Schedule(process.pathALCARECOEcalCalZElectron,  process.pathALCARECOEcalCalWElectron,
-                                            process.pathALCARECOEcalCalZSCElectron, #process.pathALCARECOEcalCalZmmgPhoton,
+                                            process.pathALCARECOEcalCalZSCElectron,
                                             #process.ALCARECOoutput_step,
                                             process.NtuplePath, process.NtupleEndPath
                                             ) # fix the output modules
-        if(options.skim=="" or options.skim=="ZHLTSkim" or options.skim=="partGun"):
+        if(options.skim=="" or options.skim=="ZHLTSkim"):
             process.schedule += cms.Schedule(process.pathALCARECOEcalCalSingleElectron)
 elif(options.type=='SKIMEFFTEST'):
     process.schedule = cms.Schedule(process.pathWElectronSkimGen, process.pathZSCElectronSkimGen, process.pathZElectronSkimGen,
@@ -452,8 +371,6 @@ process.patElectrons.userData = cms.PSet(
 )
 
 process.electronMatch.src = myEleCollection
-if (options.skim=="ZmmgSkim"):
-    process.alCaIsolatedElectrons.photonLabel = cms.InputTag("gedPhotons")
 
 if not doTreeOnly:
     process.alcaElectronTracksReducer.electronLabel = myEleCollection
@@ -514,13 +431,5 @@ for modifier in process.slimmedECALELFElectrons.modifierConfig.modifications:
     modifier.ecalRecHitsEB = process.slimmedECALELFElectrons.reducedBarrelRecHitCollection
     modifier.ecalRecHitsEE = process.slimmedECALELFElectrons.reducedEndcapRecHitCollection
 
-if(options.type=="ALCARECOSIM"):
-    process.zNtupleDumper.recHitCollectionES = cms.InputTag("reducedEcalRecHitsES")
 
-############################
-## Dump the output Python ##
-############################
-
-processDumpFile = open('processDump.py', 'w')
-print >> processDumpFile, process.dumpPython()
 
